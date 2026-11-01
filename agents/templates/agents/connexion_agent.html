@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Connexion Agent | MWALIMU AI</title>
+
+    <link rel="stylesheet" href="{% static 'agents/style.css' %}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>MWALIMU AI</h1>
+        <p>Espace réservé aux agents</p>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+            <h2>Connexion Agent</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <label>Nom d'utilisateur</label>
+                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+
+                <label>Mot de passe</label>
+                <input type="password" name="password" placeholder="Mot de passe" required>
+
+                {% if erreur %}
+                    <p style="color: red;">{{ erreur }}</p>
+                {% endif %}
+
+                <button type="submit">Se connecter</button>
+            </form>
+
+        </section>
+        <a href="/">Retour à l'accueil</a>
+
+    </main>
+
+</body>
+</html>

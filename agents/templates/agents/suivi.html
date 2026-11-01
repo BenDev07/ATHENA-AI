@@ -1,0 +1,97 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MWALIMU AI | Suivi</title>
+
+    <link rel="stylesheet" href="{% static 'agents/style.css' %}">
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>MWALIMU AI</h1>
+        <p>Suivi de votre réclamation</p>
+    </header>
+
+    <main>
+
+        <section class="form-container">
+
+            <h2>Suivre ma réclamation</h2>
+
+            <p>
+                Entrez votre numéro de suivi pour consulter
+                l'état de votre réclamation.
+            </p>
+
+            {% if erreur %}
+                <p class="error">{{ erreur }}</p>
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <label for="numero">Numéro de suivi</label>
+
+                <input
+                    type="number"
+                    id="numero"
+                    name="numero"
+                    placeholder="Exemple : 4"
+                    min="1"
+                    required
+                >
+
+                <button type="submit">Rechercher</button>
+            </form>
+
+            {% if reclamation %}
+
+                <hr>
+
+                <h3>Résultat de votre recherche</h3>
+
+                <p><strong>Numéro :</strong> #{{ reclamation.id }}</p>
+
+                <p><strong>Client :</strong> {{ reclamation.client_name }}</p>
+
+                <p><strong>Problème :</strong> {{ reclamation.description }}</p>
+
+                <p><strong>Statut :</strong> {{ reclamation.status }}</p>
+
+                <p><strong>Date :</strong> {{ reclamation.created_at|date:"d/m/Y H:i" }}</p>
+
+                <hr>
+
+                <h3>Réponse de notre agent</h3>
+
+                {% if reclamation.agent_response %}
+
+                    <p>{{ reclamation.agent_response }}</p>
+
+                {% else %}
+
+                    <p>
+                        Votre réclamation est en cours de traitement.
+                        Aucune réponse de l'agent pour le moment.
+                    </p>
+
+                {% endif %}
+
+            {% endif %}
+
+            <a href="/">Retour à l'accueil</a>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
+1

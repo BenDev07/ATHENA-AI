@@ -1,0 +1,9 @@
+{
+    "name": "MWALIMU AI",
+    "short_name": "MWALIMU",
+    "description": "Assistant bancaire intelligent de Banque Démo",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2563eb"
+}

@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="{% static 'agents/manifest.json' %}">
+    <meta name="theme-color" content="#2563eb">
+
+    <title>MWALIMU AI - Assistant bancaire</title>
+
+    <link rel="stylesheet" href="{% static 'agents/style.css' %}?v=2">
+</head>
+
+<body>
+
+    <header>
+        <h1>MWALIMU AI</h1>
+        <p>Votre assistant bancaire intelligent</p>
+    </header>
+
+    <main class="chat-container">
+
+        <div class="chat-header">
+            <h2>Assistant bancaire</h2>
+            <p>Bonjour ! Comment puis-je vous aider ?</p>
+        </div>
+
+        <div class="chat-messages">
+
+          {% for message in messages %}
+
+            {% if message.role == "user" %}
+
+                <div class="message user-message">
+                    <p>{{ message.content }}</p>
+                </div>
+
+            {% else %}
+
+                <div class="message ai-message">
+                    <p>{{ message.content }}</p>
+                </div>
+
+            {% endif %}
+
+            {% empty %}
+
+            <div class="message ai-message">
+                <p>Bonjour ! Je suis MWALIMU AI. Comment puis-je vous aider ?</p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <p class="complaint-link">
+            Vous souhaitez déposer une réclamation ?
+            <a href="{% url 'deposer_reclamation' %}">
+               Cliquez ici
+            </a>
+        </p>
+
+        <form method="POST" class="chat-form">
+
+            {% csrf_token %}
+
+            <textarea
+                name="question"
+                placeholder="Écrivez votre message..."
+                required
+            ></textarea>
+
+            <button type="submit">Envoyer</button>
+
+        </form>
+
+        <a href="{% url 'accueil' %}">Retour à l'accueil</a>
+
+    </main>
+
+
+    <script>
+        if ("serviceWorker" in navigator) {
+
+            navigator.serviceWorker.register(
+               "/service-worker.js"
+            )
+            .then(() => {
+                console.log("MWALIMU AI : Service Worker activé !");
+            })
+            .catch(error => {
+                console.log("Erreur Service Worker :", error);
+            });
+
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+# BANQUE DÉMO — BASE DE CONNAISSANCES
+
+## 1. Informations générales
+Nom : Banque Démo
+Institution fictive utilisée pour les tests de MWALIMU AI.
+
+## 2. Horaires
+Du lundi au vendredi : 08h00 à 16h00.
+Samedi : 08h00 à 12h00.
+Dimanche et jours fériés : fermé.
+
+## 3. Ouverture de compte
+Pour demander l'ouverture d'un compte, le client doit fournir :
+- Une pièce d'identité valide.
+- Une photo d'identité récente.
+- Un numéro de téléphone.
+- Un justificatif de domicile.
+
+Le client doit préciser le type de compte souhaité.
+L'ouverture est soumise à la vérification des documents par la banque.
+
+## 4. Carte bancaire bloquée
+En cas de blocage :
+- Le client doit contacter le service clientèle.
+- Si le client soupçonne une fraude ou une perte de carte, il doit demander immédiatement une opposition.
+- Un agent humain doit prendre en charge les situations sensibles.
+
+Ne jamais demander le code PIN ou le mot de passe du client.
+
+## 5. Crédits
+Les conditions et taux d'intérêt dépendent du type de crédit et du profil du client.
+
+Les taux exacts ne sont pas encore définis dans cette version de démonstration.
+
+Pour obtenir une proposition précise, le client doit contacter un agent.
+
+## 6. Réclamations
+Un client peut signaler :
+- Une opération inconnue.
+- Un problème de retrait.
+- Un problème de transfert.
+- Un problème lié à sa carte.
+- Tout autre problème concernant les services bancaires.
+
+Une réclamation nécessitant une intervention doit être transmise à un agent humain.
