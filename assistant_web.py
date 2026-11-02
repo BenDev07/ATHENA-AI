@@ -18,9 +18,9 @@ def obtenir_connexion():
 
     return connexion
 
-# Instructions de MWALIMU AI
+# Instructions de ATHENA AI
 instructions = f"""
-Tu es MWALIMU AI, un assistant intelligent de service client
+Tu es ATHENA AI, un assistant intelligent de service client
 pour Banque Démo.
 
 TA MISSION :

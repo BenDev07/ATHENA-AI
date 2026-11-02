@@ -1,6 +1,6 @@
 {
-    "name": "MWALIMU AI",
-    "short_name": "MWALIMU",
+    "name": "ATHENA AI",
+    "short_name": "ATHENA",
     "description": "Assistant bancaire intelligent de Banque Démo",
     "start_url": "/",
     "display": "standalone",

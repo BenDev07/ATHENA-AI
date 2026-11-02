@@ -2,7 +2,7 @@
 
 ## 1. Informations générales
 Nom : Banque Démo
-Institution fictive utilisée pour les tests de MWALIMU AI.
+Institution fictive utilisée pour les tests de ATHENA AI.
 
 ## 2. Horaires
 Du lundi au vendredi : 08h00 à 16h00.

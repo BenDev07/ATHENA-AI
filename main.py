@@ -57,7 +57,7 @@ def enregistrer_reclamation(nom, description):
 # Fonction pour traiter une réclamation 
 def traiter_reclamation():
 
-    print("\nMWALIMU AI : Je vais vous aider à déposer une réclamation.")
+    print("\nATHENA AI : Je vais vous aider à déposer une réclamation.")
 
     nom = input("Votre nom : ")
 
@@ -147,7 +147,7 @@ outils = [
 
 # print(messages)
 
-print("Bienvenue dans MWALIMU AI !")
+print("Bienvenue dans ATHENA AI !")
 print("Écris 'quit' pour arrêter la conversation.")
 
 # Notre mémoire conversationnelle
@@ -155,7 +155,7 @@ historique = [
     {
         "role": "system",
         "content": """
-        Tu es MWALIMU AI, un assistant intelligent de service client
+        Tu es ATHENA AI, un assistant intelligent de service client
         pour Banque Démo.
 
         TA MISSION :
@@ -235,7 +235,7 @@ while True:
         continue
 
     if question.lower() == "quit":
-        print("MWALIMU AI : À bientôt !")
+        print("ATHENA AI : À bientôt !")
         break
 
     # Ajouter la question à l'historique
@@ -317,7 +317,7 @@ while True:
     )
     connexion.commit()
 
-    print("\nMWALIMU AI :", message_ia)
+    print("\nATHENA AI :", message_ia)
 
 
 

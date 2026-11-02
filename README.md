@@ -1,8 +1,8 @@
-# ATHENA AI
+# 
 
 ### Assistant intelligent de service client bancaire
 
-**ATHENA AI** (Assistant de Traitement Harmonisé et d'Enseignement Numérique Automatisé par Intelligence Artificielle) est une application intelligente conçue pour améliorer la gestion du service client bancaire.
+**** (Assistant de Traitement Harmonisé et d'Enseignement Numérique Automatisé par Intelligence Artificielle) est une application intelligente conçue pour améliorer la gestion du service client bancaire.
 
 Elle utilise l'intelligence artificielle pour répondre aux questions courantes des clients, les orienter dans leurs démarches et faciliter le traitement des réclamations.
 
@@ -88,16 +88,16 @@ http://127.0.0.1:8000/
 
 ## Mode Offline-First
 
-ATHENA AI est conçu pour fonctionner localement. Après installation et mise en cache des ressources nécessaires, les principales fonctionnalités peuvent être utilisées sans connexion Internet.
+ est conçu pour fonctionner localement. Après installation et mise en cache des ressources nécessaires, les principales fonctionnalités peuvent être utilisées sans connexion Internet.
 
 Le serveur Django et Ollama doivent toutefois rester actifs sur la machine.
 
 ## Projet
 
-**Nom :** ATHENA AI  
+**Nom :**   
 **Organisation :** Banque Démo  
 **Dépôt GitHub :** https://github.com/BenDev07/ATHENA-AI
 
 ---
 
-*ATHENA AI — La sagesse au service de la relation client.*
+* — La sagesse au service de la relation client.*

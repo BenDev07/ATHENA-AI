@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "mwalimu-ai-v3";
+const CACHE_NAME = "athena-ai-v1";
 
 const FICHIERS = [
     "/",

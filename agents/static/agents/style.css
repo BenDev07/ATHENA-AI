@@ -1,6 +1,6 @@
 
 /* =========================================
-   MWALIMU AI — IDENTITÉ VISUELLE
+    ATHENA AI — IDENTITÉ VISUELLE 
    ========================================= */
 
 :root {
@@ -109,8 +109,8 @@ body > header p {
 }
 
 .logo svg {
-    width: 38px;
-    height: 38px;
+    width: 45px;
+    height: 45px;
     flex-shrink: 0;
 }
 
@@ -128,12 +128,14 @@ main {
     background: var(--surface);
     padding: 38px;
     margin-bottom: 35px;
-    border-left: 4px solid var(--accent);
+    border-left: 8px solid rgb(92, 120, 92);
 }
 
 .welcome h2 {
     font-size: 34px;
     margin: 0 0 15px;
+    font: 900;
+    font-weight: 800;
 }
 
 .welcome p {
@@ -193,13 +195,18 @@ main {
 
 .service-card a {
     flex-shrink: 0;
-    color: var(--secondary);
+    color: rgb(242, 238, 238);
     font-weight: 700;
-    padding: 10px 0;
+    padding: 10px;
+    background-color: #678461;
+    border-radius: 10px;
 }
 
 .service-card a:hover {
-    color: var(--accent);
+    color: rgb(229, 228, 228);
+    background-color: #315b58;
+    transform: translateX(10px);
+    transition: 0.5s;
 }
 
 .home-footer {
@@ -394,11 +401,14 @@ button:hover {
 .chat-form textarea {
     min-height: 55px;
     max-height: 130px;
+    border-radius: 15px;
 }
 
 .chat-form button {
-    margin-top: 0;
-    min-width: 100px;
+    padding: auto;
+    min-width: 50px;
+    margin: auto;
+    
 }
 
 .chat-container > a {
@@ -617,7 +627,7 @@ body:has(.stats) {
     }
 
     .chat-form button {
-        width: 100%;
+        width: 30%;
     }
 
     .message {
