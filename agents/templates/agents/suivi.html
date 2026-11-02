@@ -7,105 +7,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ATHENA AI | Suivi</title>
+    <title>ATHENA AI | Suivi de réclamation</title>
 
-    <link rel="stylesheet" href="{% static 'agents/style.css' %}">
+    <link rel="stylesheet" href="{% static 'agents/style.css' %}?v=7">
 </head>
 
-<body>
+<body class="athena-tracking-page">
 
-    <header class="header">
-        <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="32"
-             height="32"
-             viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path fill="#a3c197" d="M6 2.5c1.778 0 3.438.359 4.69.984c.469.235.925.535 1.308.897q.192-.181.401-.339l.8-.602l1.201 1.6l-.8.6c-.493.37-.6.68-.6.86v12.65q.153-.087.31-.166C14.563 18.358 16.223 18 18 18c1.065 0 2.085.13 3 .366V9h2v12.307l-1.408-.63C20.68 20.269 19.422 20 18 20c-1.535 0-2.876.314-3.796.773c-.979.49-1.204.981-1.204 1.227h-2c0-.246-.225-.737-1.204-1.227C8.876 20.313 7.536 20 6 20c-1.421 0-2.68.269-3.592.677L1 21.307V3.77c.228-.175.337-.264.441-.336c.062-.043.163-.106.308-.18c.194-.099.468-.216.834-.328C3.315 2.702 4.415 2.5 6 2.5"/>
-            <path fill="#94ba85" d="M20.532 3.467L23.57 4.75l-3.037 1.282L19.25 9.07l-1.283-3.037L14.93 4.75l3.036-1.283L19.25.43z"/>
-        </svg>
+    <header class="tracking-navbar">
+        <a href="/" class="tracking-brand">
+            <span class="tracking-brand-icon">A</span>
+            <span>
+                <strong>ATHENA AI</strong>
+                <small>Banque Démo · Assistance intelligente</small>
+            </span>
+        </a>
 
-        <div>
-            <h1>ATHENA AI</h1>
-            <p>Suivi de votre réclamation</p>
-        </div>
-        </div>
-        
+        <a href="/" class="tracking-back-link">
+            <span>←</span> Retour à l'accueil
+        </a>
     </header>
 
-    <main>
+    <main class="tracking-main">
 
-        <section class="form-container">
+        <section class="tracking-intro">
+            <span class="tracking-eyebrow">ESPACE CLIENT</span>
 
-            <h2>Suivre ma réclamation</h2>
+            <h1>Suivez votre réclamation.</h1>
 
             <p>
-                Entrez votre numéro de suivi pour consulter
-                l'état de votre réclamation.
+                Consultez l'évolution de votre demande et prenez connaissance
+                de la réponse de notre équipe.
             </p>
+        </section>
 
-            {% if erreur %}
-                <p class="error">{{ erreur }}</p>
-            {% endif %}
+        <section class="tracking-layout">
 
-            <form method="POST">
-                {% csrf_token %}
+            <div class="tracking-info">
+                <div class="tracking-info-icon">⌕</div>
 
-                <label for="numero">Numéro de suivi</label>
+                <h2>Où en est votre demande ?</h2>
 
-                <input
-                    type="number"
-                    id="numero"
-                    name="numero"
-                    placeholder="Exemple : 4"
-                    min="1"
-                    required
-                >
+                <p>
+                    Chaque réclamation possède un numéro de suivi unique.
+                    Saisissez-le pour retrouver les informations concernant
+                    votre demande.
+                </p>
 
-                <button type="submit">Rechercher</button>
-            </form>
+                <div class="tracking-help">
+                    <span class="tracking-help-icon">i</span>
+                    <div>
+                        <strong>Besoin d'aide ?</strong>
+                        <p>
+                            Votre numéro de suivi est indiqué dans le message
+                            de confirmation après le dépôt de votre réclamation.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-            {% if reclamation %}
+            <div class="tracking-content">
 
-                <hr>
+                <div class="tracking-search-card">
+                    <h2>Suivre ma réclamation</h2>
 
-                <h3>Résultat de votre recherche</h3>
+                    <p>Entrez votre numéro de suivi ci-dessous.</p>
 
-                <p><strong>Numéro :</strong> #{{ reclamation.id }}</p>
+                    {% if erreur %}
+                        <div class="tracking-error">
+                            {{ erreur }}
+                        </div>
+                    {% endif %}
 
-                <p><strong>Client :</strong> {{ reclamation.client_name }}</p>
+                    <form method="POST" class="tracking-search-form">
+                        {% csrf_token %}
 
-                <p><strong>Problème :</strong> {{ reclamation.description }}</p>
+                        <label for="numero">Numéro de suivi</label>
 
-                <p><strong>Statut :</strong> {{ reclamation.status }}</p>
+                        <input
+                            type="number"
+                            id="numero"
+                            name="numero"
+                            placeholder="Exemple : 4"
+                            min="1"
+                            required
+                        >
 
-                <p><strong>Date :</strong> {{ reclamation.created_at|date:"d/m/Y H:i" }}</p>
+                        <button type="submit">
+                            Rechercher ma réclamation
+                            <span>→</span>
+                        </button>
+                    </form>
+                </div>
 
-                <hr>
+                {% if reclamation %}
 
-                <h3>Réponse de notre agent</h3>
+                    <div class="tracking-result-card">
 
-                {% if reclamation.agent_response %}
+                        <div class="tracking-result-header">
+                            <div>
+                                <span class="tracking-result-label">
+                                    RÉSULTAT DE LA RECHERCHE
+                                </span>
+                                <h2>Réclamation #{{ reclamation.id }}</h2>
+                            </div>
 
-                    <p>{{ reclamation.agent_response }}</p>
+                            <span class="tracking-status">
+                                {{ reclamation.status }}
+                            </span>
+                        </div>
 
-                {% else %}
+                        <div class="tracking-details">
 
-                    <p>
-                        Votre réclamation est en cours de traitement.
-                        Aucune réponse de l'agent pour le moment.
-                    </p>
+                            <div class="tracking-detail">
+                                <span>Client</span>
+                                <strong>{{ reclamation.client_name }}</strong>
+                            </div>
+
+                            <div class="tracking-detail">
+                                <span>Date de dépôt</span>
+                                <strong>
+                                    {{ reclamation.created_at|date:"d/m/Y H:i" }}
+                                </strong>
+                            </div>
+
+                        </div>
+
+                        <div class="tracking-problem">
+                            <span>DESCRIPTION DU PROBLÈME</span>
+                            <p>{{ reclamation.description }}</p>
+                        </div>
+
+                        <div class="tracking-response">
+
+                            <div class="tracking-response-heading">
+                                <span class="tracking-response-icon">✓</span>
+                                <h3>Réponse de notre agent</h3>
+                            </div>
+
+                            {% if reclamation.agent_response %}
+
+                                <p>{{ reclamation.agent_response }}</p>
+
+                            {% else %}
+
+                                <p class="tracking-pending-message">
+                                    Votre réclamation est en cours de traitement.
+                                    Aucune réponse de l'agent pour le moment.
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
 
                 {% endif %}
 
-            {% endif %}
-
-            <a href="/">Retour à l'accueil</a>
+            </div>
 
         </section>
+
+        <footer class="tracking-footer">
+            <span>ATHENA AI</span>
+            <p>Votre banque, plus proche de vous.</p>
+        </footer>
 
     </main>
 
 </body>
 </html>
-1

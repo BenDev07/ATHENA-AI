@@ -1,127 +1,226 @@
-{% load static %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ATHENA AI | Réclamations</title>
-
-    <link rel="stylesheet" href="{% static 'agents/style.css' %}">
+    <title>ATHENA AI | Gestion des réclamations</title>
+    <link rel="stylesheet" href="{% static 'agents/style.css' %}?v=5">
 </head>
 
-<body>
+<body style="background-color: rgb(243, 238, 238);" class="athena-dashboard-page">
 
-    <header class="header">
-        <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="32"
-             height="32"
-             viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path fill="#a3c197" d="M6 2.5c1.778 0 3.438.359 4.69.984c.469.235.925.535 1.308.897q.192-.181.401-.339l.8-.602l1.201 1.6l-.8.6c-.493.37-.6.68-.6.86v12.65q.153-.087.31-.166C14.563 18.358 16.223 18 18 18c1.065 0 2.085.13 3 .366V9h2v12.307l-1.408-.63C20.68 20.269 19.422 20 18 20c-1.535 0-2.876.314-3.796.773c-.979.49-1.204.981-1.204 1.227h-2c0-.246-.225-.737-1.204-1.227C8.876 20.313 7.536 20 6 20c-1.421 0-2.68.269-3.592.677L1 21.307V3.77c.228-.175.337-.264.441-.336c.062-.043.163-.106.308-.18c.194-.099.468-.216.834-.328C3.315 2.702 4.415 2.5 6 2.5"/>
-            <path fill="#94ba85" d="M20.532 3.467L23.57 4.75l-3.037 1.282L19.25 9.07l-1.283-3.037L14.93 4.75l3.036-1.283L19.25.43z"/>
-        </svg>
+    <aside class="dashboard-sidebar">
+        <a href="{% url 'accueil' %}" class="dashboard-brand">
+            <div class="dashboard-brand-icon">A</div>
+            <div>
+                <strong>ATHENA AI</strong>
+                <span>BANQUE DÉMO</span>
+            </div>
+        </a>
 
-        <div>
-            <h1>ATHENA AI</h1>
-            <p>Tableau de bord de gestion des réclamations</p>
+        <div class="dashboard-menu">
+            <span class="dashboard-menu-label">ESPACE DE TRAVAIL</span>
+
+            <a href="{% url 'liste_reclamations' %}" class="dashboard-menu-link active">
+                <span>▤</span>
+                Réclamations
+            </a>
+
+            <a href="{% url 'accueil' %}" class="dashboard-menu-link">
+                <span>⌂</span>
+                Page d'accueil
+            </a>
         </div>
+
+        <div class="dashboard-sidebar-bottom">
+            <div class="dashboard-agent">
+                <div class="dashboard-agent-avatar">A</div>
+                <div>
+                    <strong>Espace agent</strong>
+                    <span>Personnel autorisé</span>
+                </div>
+            </div>
+
+            <a href="{% url 'accueil' %}" class="dashboard-logout">
+                ← Retour à l'accueil
+            </a>
         </div>
-        
-    </header>
+    </aside>
 
-    <section class="stats">
-        <p>Total des réclamations</p>
-        <h2>{{ reclamations.count }}</h2>
-    </section>
+    <main class="dashboard-main">
 
-    <section class="table-container">
+        <header class="dashboard-topbar">
+            <div>
+                <span class="dashboard-breadcrumb">ESPACE AGENT / GESTION</span>
+                <h1>Tableau de bord</h1>
+            </div>
 
-        <h3>Réclamations des clients</h3>
+            <div class="dashboard-topbar-status">
+                <span></span>
+                Système local
+            </div>
+        </header>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Client</th>
-                    <th>Problème</th>
-                    <th>Date</th>
-                    <th>Statut</th>
-                    <th>Réponse au client</th>
-                </tr>
-            </thead>
+        <section class="dashboard-content">
 
-            <tbody>
-                {% for reclamation in reclamations %}
-                    <tr>
-                        <td>#{{ reclamation.id }}</td>
+            <div class="dashboard-intro">
+                <div>
+                    <h2>Gestion des réclamations</h2>
+                    <p>Consultez les demandes des clients et assurez leur suivi.</p>
+                </div>
+            </div>
 
-                        <td>{{ reclamation.client_name }}</td>
+            <div class="dashboard-stats-grid">
 
-                        <td>{{ reclamation.description }}</td>
+                <article class="dashboard-stat-card">
+                    <div class="dashboard-stat-icon">▤</div>
+                    <p>Total des réclamations</p>
+                    <h3>{{ reclamations.count }}</h3>
+                    <span>Demandes enregistrées</span>
+                </article>
 
-                        <td>{{ reclamation.created_at|date:"d/m/Y H:i" }}</td>
+                <article class="dashboard-stat-card">
+                    <div class="dashboard-stat-icon">◷</div>
+                    <p>Suivi des demandes</p>
+                    <h3>Gestion</h3>
+                    <span>Statuts actualisables</span>
+                </article>
 
-                        <td>
-                            <form method="POST" action="{% url 'modifier_statut' reclamation.id %}">
-                                {% csrf_token %}
+                <article class="dashboard-stat-card">
+                    <div class="dashboard-stat-icon">✓</div>
+                    <p>Assistance client</p>
+                    <h3>Active</h3>
+                    <span>Réponses aux réclamations</span>
+                </article>
 
-                                <select name="status">
-                                    <option value="En attente"
-                                        {% if reclamation.status == "En attente" %}selected{% endif %}>
-                                        En attente
-                                    </option>
+            </div>
 
-                                    <option value="En cours"
-                                        {% if reclamation.status == "En cours" %}selected{% endif %}>
-                                        En cours
-                                    </option>
+            <section class="dashboard-table-section">
 
-                                    <option value="Résolue"
-                                        {% if reclamation.status == "Résolue" %}selected{% endif %}>
-                                        Résolue
-                                    </option>
-                                </select>
+                <div class="dashboard-table-heading">
+                    <div>
+                        <h2>Réclamations des clients</h2>
+                        <p>Consultez et traitez les demandes reçues.</p>
+                    </div>
 
-                                <button type="submit">Modifier</button>
-                            </form>
-                        </td>
+                    <span class="dashboard-total">
+                        {{ reclamations.count }} demande(s)
+                    </span>
+                </div>
 
-                        <td>
-                            <form method="POST" action="{% url 'repondre_reclamation' reclamation.id %}">
-                                {% csrf_token %}
+                <div class="dashboard-table-scroll">
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Client</th>
+                                <th>Problème signalé</th>
+                                <th>Date</th>
+                                <th>Statut</th>
+                                <th>Réponse au client</th>
+                            </tr>
+                        </thead>
 
-                                <textarea
-                                    name="agent_response"
-                                    placeholder="Écrire une réponse au client..."
-                                    rows="3"
-                                ></textarea>
+                        <tbody>
+                            {% for reclamation in reclamations %}
+                                <tr>
+                                    <td>
+                                        <strong class="dashboard-reference">
+                                            #{{ reclamation.id }}
+                                        </strong>
+                                    </td>
 
-                                <button type="submit">Envoyer la réponse</button>
-                            </form>
+                                    <td>
+                                        <strong class="dashboard-client">
+                                            {{ reclamation.client_name }}
+                                        </strong>
+                                    </td>
 
-                            {% if reclamation.agent_response %}
-                                <p><strong>Réponse déjà envoyée :</strong></p>
-                                <p>{{ reclamation.agent_response }}</p>
-                            {% endif %}
-                        </td>
-                    </tr>
+                                    <td class="dashboard-description">
+                                        {{ reclamation.description }}
+                                    </td>
 
-                {% empty %}
-                    <tr>
-                        <td colspan="6" class="empty">
-                            Aucune réclamation enregistrée.
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                                    <td class="dashboard-date">
+                                        {{ reclamation.created_at|date:"d/m/Y H:i"|default:"Non renseignée" }}
+                                    </td>
 
-        <a href="/">Retour à l'accueil</a>
+                                    <td>
+                                        <form method="POST"
+                                              action="{% url 'modifier_statut' reclamation.id %}"
+                                              class="dashboard-status-form">
+                                            {% csrf_token %}
 
-    </section>
+                                            <select name="status">
+                                                <option value="En attente"
+                                                    {% if reclamation.status == "En attente" %}selected{% endif %}>
+                                                    En attente
+                                                </option>
+
+                                                <option value="En cours"
+                                                    {% if reclamation.status == "En cours" %}selected{% endif %}>
+                                                    En cours
+                                                </option>
+
+                                                <option value="Résolue"
+                                                    {% if reclamation.status == "Résolue" %}selected{% endif %}>
+                                                    Résolue
+                                                </option>
+                                            </select>
+
+                                            <button type="submit">Mettre à jour</button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        <form method="POST"
+                                              action="{% url 'repondre_reclamation' reclamation.id %}"
+                                              class="dashboard-response-form">
+                                            {% csrf_token %}
+
+                                            <textarea
+                                                name="agent_response"
+                                                placeholder="Écrire une réponse au client..."
+                                                rows="3"
+                                            ></textarea>
+
+                                            <button type="submit">Envoyer la réponse →</button>
+                                        </form>
+
+                                        {% if reclamation.agent_response %}
+                                            <div class="dashboard-previous-response">
+                                                <strong>Réponse déjà envoyée</strong>
+                                                <p>{{ reclamation.agent_response }}</p>
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                            {% empty %}
+                                <tr>
+                                    <td colspan="6" class="dashboard-empty">
+                                        <span>▤</span>
+                                        <strong>Aucune réclamation enregistrée</strong>
+                                        <p>Les nouvelles demandes apparaîtront ici.</p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <footer class="dashboard-footer">
+                © Banque Démo — ATHENA AI
+                <span>Gestion du service clientèle</span>
+            </footer>
+
+        </section>
+
+    </main>
 
 </body>
 </html>

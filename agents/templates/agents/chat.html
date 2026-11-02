@@ -1,115 +1,229 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f8fa">
     <link rel="manifest" href="{% static 'agents/manifest.json' %}">
-    <meta name="theme-color" content="#2563eb">
-
-    <title>ATHENA AI - Assistant bancaire</title>
-
-    <link rel="stylesheet" href="{% static 'agents/style.css' %}?v=2">
+    <title>ATHENA AI | Assistant bancaire</title>
+    <link rel="stylesheet" href="{% static 'agents/style.css' %}?v=3">
 </head>
 
-<body>
+<body style="background-color: rgb(236, 232, 232);"  class="athena-chat-page">
 
-    <header class="header">
-        <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="32"
-             height="32"
-             viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path fill="#a3c197" d="M6 2.5c1.778 0 3.438.359 4.69.984c.469.235.925.535 1.308.897q.192-.181.401-.339l.8-.602l1.201 1.6l-.8.6c-.493.37-.6.68-.6.86v12.65q.153-.087.31-.166C14.563 18.358 16.223 18 18 18c1.065 0 2.085.13 3 .366V9h2v12.307l-1.408-.63C20.68 20.269 19.422 20 18 20c-1.535 0-2.876.314-3.796.773c-.979.49-1.204.981-1.204 1.227h-2c0-.246-.225-.737-1.204-1.227C8.876 20.313 7.536 20 6 20c-1.421 0-2.68.269-3.592.677L1 21.307V3.77c.228-.175.337-.264.441-.336c.062-.043.163-.106.308-.18c.194-.099.468-.216.834-.328C3.315 2.702 4.415 2.5 6 2.5"/>
-            <path fill="#94ba85" d="M20.532 3.467L23.57 4.75l-3.037 1.282L19.25 9.07l-1.283-3.037L14.93 4.75l3.036-1.283L19.25.43z"/>
-        </svg>
+<div class="athena-chat-layout">
 
-        <div>
-            <h1>ATHENA AI</h1>
-            <p>Votre assistant bancaire intelligent</p>
+    <!-- BARRE LATERALE -->
+    <aside class="athena-sidebar">
+
+        <a href="{% url 'accueil' %}" class="athena-brand">
+            <div class="athena-brand-icon">A</div>
+            <div>
+                <strong>ATHENA AI</strong>
+                <span>ASSISTANT BANCAIRE</span>
+            </div>
+        </a>
+
+        <form method="POST" action="{% url 'nouvelle_conversation' %}" class="new-chat-form">
+        {% csrf_token %}
+
+        <button type="submit" class="new-chat-link">
+        <span class="new-chat-icon">＋</span>
+        Nouvelle discussion
+        </button>
+        </form>
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">SERVICES</span>
+
+            <a href="{% url 'chatbot' %}" class="sidebar-link active">
+                <span>✦</span> Assistant intelligent
+            </a>
+
+            <a href="{% url 'deposer_reclamation' %}" class="sidebar-link">
+                <span>▤</span> Déposer une réclamation
+            </a>
         </div>
+
+        <div class="sidebar-bottom">
+            <div class="offline-indicator">
+                <span class="status-dot"></span>
+                Assistant local
+            </div>
+
+            <a href="{% url 'accueil' %}" class="sidebar-home">
+                ← Retour à l'accueil
+            </a>
         </div>
-        
-    </header>
 
-    <main class="chat-container">
+    </aside>
 
-        <div class="chat-header">
-            <h2>Assistant bancaire</h2>
-            <p>Bonjour ! Comment puis-je vous aider ?</p>
-        </div>
 
-        <div class="chat-messages">
+    <!-- ESPACE PRINCIPAL -->
+    <main style="background-color: rgb(237, 240, 237);" class="athena-chat-main">
 
-          {% for message in messages %}
+        <header class="athena-topbar">
+            <div>
+                <span class="topbar-title">Assistant bancaire</span>
+                <span class="topbar-subtitle">Banque Démo</span>
+            </div>
 
-            {% if message.role == "user" %}
+            <div class="topbar-status">
+                <span class="status-dot"></span>
+                En ligne localement
+            </div>
+        </header>
 
-                <div class="message user-message">
-                    <p>{{ message.content }}</p>
+
+        <!-- CONVERSATION -->
+        <section class="athena-conversation">
+
+            {% if messages %}
+
+                <div class="conversation-messages">
+
+                    {% for message in messages %}
+
+                        {% if message.role == "user" %}
+
+                            <div class="chat-message user-message">
+                                <div class="message-avatar user-avatar">Vous</div>
+                                <div class="message-content">
+                                    <p>{{ message.content }}</p>
+                                </div>
+                            </div>
+
+                        {% else %}
+
+                            <div class="chat-message ai-message">
+                                <div class="message-avatar ai-avatar">A</div>
+                                <div class="message-content">
+                                    <span class="assistant-name">ATHENA AI</span>
+                                    <p>{{ message.content }}</p>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                    {% endfor %}
+
                 </div>
 
             {% else %}
 
-                <div class="message ai-message">
-                    <p>{{ message.content }}</p>
+                <div class="athena-welcome">
+
+                    <div class="welcome-symbol">✦</div>
+
+                    <span class="welcome-eyebrow">VOTRE ASSISTANT BANCAIRE</span>
+
+                    <h1>Bonjour ! Comment puis-je vous aider ?</h1>
+
+                    <p>
+                        Je suis ATHENA AI, votre assistant de Banque Démo.
+                        Posez-moi vos questions sur nos services bancaires.
+                    </p>
+
+                    <div class="suggestion-grid">
+
+                        <div class="suggestion-card">
+                            <span>01</span>
+                            <strong>Ouvrir un compte</strong>
+                            <p>Quels documents dois-je fournir ?</p>
+                        </div>
+
+                        <div class="suggestion-card">
+                            <span>02</span>
+                            <strong>Carte bancaire</strong>
+                            <p>Que faire si ma carte est bloquée ?</p>
+                        </div>
+
+                        <div class="suggestion-card">
+                            <span>03</span>
+                            <strong>Nos agences</strong>
+                            <p>Quels sont vos horaires d'ouverture ?</p>
+                        </div>
+
+                        <div class="suggestion-card">
+                            <span>04</span>
+                            <strong>Réclamation</strong>
+                            <p>Comment signaler un problème ?</p>
+                        </div>
+
+                    </div>
+
                 </div>
 
             {% endif %}
 
-            {% empty %}
+        </section>
 
-            <div class="message ai-message">
-                <p>Bonjour ! Je suis ATHENA AI. Comment puis-je vous aider ?</p>
+
+        <!-- ZONE DE SAISIE -->
+        <footer class="athena-composer-area">
+
+            <div class="complaint-notice">
+                <span>Besoin d'une assistance personnalisée ?</span>
+                <a href="{% url 'deposer_reclamation' %}">
+                    Déposer une réclamation →
+                </a>
             </div>
 
-            {% endfor %}
+            <form method="POST" class="athena-composer">
+                {% csrf_token %}
 
-        </div>
+                <textarea
+                    name="question"
+                    id="chat-question"
+                    placeholder="Écrivez votre message à ATHENA AI..."
+                    rows="1"
+                    required
+                ></textarea>
 
-        <p class="complaint-link">
-            Vous souhaitez déposer une réclamation ?
-            <a href="{% url 'deposer_reclamation' %}">
-               Cliquez ici
-            </a>
-        </p>
+                <button type="submit" aria-label="Envoyer le message">
+                    <svg viewBox="0 0 24 24" width="21" height="21"
+                         fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M12 19V5"/>
+                        <path d="m5 12 7-7 7 7"/>
+                    </svg>
+                </button>
 
-        <form method="POST" class="chat-form">
+            </form>
 
-            {% csrf_token %}
+            <p class="composer-disclaimer">
+                ATHENA AI peut commettre des erreurs. Ne partagez jamais votre code PIN ou mot de passe.
+            </p>
 
-            <textarea
-                name="question"
-                placeholder="Écrivez votre message..."
-                required
-            ></textarea>
-
-            <button type="submit">Envoyer</button>
-
-        </form>
-
-        <a href="{% url 'accueil' %}">Retour à l'accueil</a>
+        </footer>
 
     </main>
 
+</div>
 
-    <script>
-        if ("serviceWorker" in navigator) {
 
-            navigator.serviceWorker.register(
-               "/service-worker.js"
-            )
-            .then(() => {
-                console.log("ATHENA AI : Service Worker activé !");
-            })
-            .catch(error => {
-                console.log("Erreur Service Worker :", error);
-            });
+<script>
+    const textarea = document.getElementById("chat-question");
 
-        }
-    </script>
+    textarea.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = Math.min(this.scrollHeight, 150) + "px";
+    });
+
+    const conversation = document.querySelector(".conversation-messages");
+
+    if (conversation) {
+        conversation.scrollTop = conversation.scrollHeight;
+    }
+
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service-worker.js")
+            .then(() => console.log("ATHENA AI : Service Worker activé !"))
+            .catch(error => console.log("Erreur Service Worker :", error));
+    }
+</script>
 
 </body>
 </html>

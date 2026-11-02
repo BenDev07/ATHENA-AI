@@ -27,10 +27,14 @@ urlpatterns = [
         name="suivre_reclamation"
     ),
     path("chat/", views.chatbot, name="chatbot"),
+    path(
+    "nouvelle-conversation/",
+    views.nouvelle_conversation,
+    name="nouvelle_conversation"
+    ),
     path("service-worker.js", views.service_worker, name="service_worker"),
 
     path("agent/connexion/", views.connexion_agent, name="connexion_agent"),
     path("agent/deconnexion/", views.deconnexion_agent, name="deconnexion_agent"),
-
-    
+  
 ]

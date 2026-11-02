@@ -1,5 +1,5 @@
-{% load static %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,95 +7,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ATHENA AI | Déposer une réclamation</title>
-
-    <link rel="stylesheet" href="{% static 'agents/style.css' %}">
+    <link rel="stylesheet" href="{% static 'agents/style.css' %}?v=6">
 </head>
 
-<body>
+<body style="background-color: rgb(243, 240, 240);" class="athena-complaint-page">
 
-    
-    <header class="header">
-        <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="32"
-             height="32"
-             viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path fill="#a3c197" d="M6 2.5c1.778 0 3.438.359 4.69.984c.469.235.925.535 1.308.897q.192-.181.401-.339l.8-.602l1.201 1.6l-.8.6c-.493.37-.6.68-.6.86v12.65q.153-.087.31-.166C14.563 18.358 16.223 18 18 18c1.065 0 2.085.13 3 .366V9h2v12.307l-1.408-.63C20.68 20.269 19.422 20 18 20c-1.535 0-2.876.314-3.796.773c-.979.49-1.204.981-1.204 1.227h-2c0-.246-.225-.737-1.204-1.227C8.876 20.313 7.536 20 6 20c-1.421 0-2.68.269-3.592.677L1 21.307V3.77c.228-.175.337-.264.441-.336c.062-.043.163-.106.308-.18c.194-.099.468-.216.834-.328C3.315 2.702 4.415 2.5 6 2.5"/>
-            <path fill="#94ba85" d="M20.532 3.467L23.57 4.75l-3.037 1.282L19.25 9.07l-1.283-3.037L14.93 4.75l3.036-1.283L19.25.43z"/>
-        </svg>
+    <header class="complaint-navbar">
+        <a href="{% url 'accueil' %}" class="complaint-brand">
+            <div class="complaint-brand-icon">A</div>
+            <div>
+                <strong>ATHENA AI</strong>
+                <span>BANQUE DÉMO</span>
+            </div>
+        </a>
 
-        <div>
-            <h1>ATHENA AI</h1>
-            <p>Déposer une réclamation</p>
-        </div>
-        </div>
-        
+        <a href="{% url 'accueil' %}" class="complaint-back">
+            ← Retour à l'accueil
+        </a>
     </header>
 
-    <main>
+    <main class="complaint-main">
 
         {% if success %}
 
-            <section class="welcome">
-                <h2>Réclamation enregistrée !</h2>
+            <section class="complaint-success">
+                <div class="success-icon">✓</div>
+
+                <span class="complaint-eyebrow">DEMANDE ENREGISTRÉE</span>
+
+                <h1>Merci pour votre confiance !</h1>
 
                 <p>
-                    Votre réclamation a été enregistrée avec succès.
+                    Votre réclamation a bien été enregistrée.
+                    Notre équipe pourra la consulter et la traiter.
                 </p>
 
-                <p>
-                    Votre numéro de suivi est :
+                <div class="tracking-number-box">
+                    <span>VOTRE NUMÉRO DE SUIVI</span>
                     <strong>#{{ numero }}</strong>
-                </p>
+                    <small>Conservez ce numéro pour suivre votre demande.</small>
+                </div>
 
-                <a href="/">Retour à l'accueil</a>
+                <a href="{% url 'suivre_reclamation' %}" class="complaint-primary-button">
+                    Suivre ma réclamation →
+                </a>
+
+                <a href="{% url 'accueil' %}" class="complaint-secondary-link">
+                    Retour à l'accueil
+                </a>
             </section>
 
         {% else %}
 
-            <section class="form-container">
+            <section class="complaint-layout">
 
-                <h2>Signaler un problème</h2>
+                <div class="complaint-information">
+                    <span class="complaint-eyebrow">SERVICE CLIENTÈLE</span>
 
-                <p>
-                    Remplissez les informations ci-dessous
-                    pour transmettre votre réclamation.
-                </p>
+                    <h1>
+                        Nous sommes<br>
+                        <span>à votre écoute.</span>
+                    </h1>
 
-                {% if erreur %}
-                    <p class="error">{{ erreur }}</p>
-                {% endif %}
+                    <p>
+                        Un problème avec votre compte, votre carte ou
+                        une opération bancaire ? Décrivez-nous votre
+                        situation afin que notre équipe puisse vous aider.
+                    </p>
 
-                <form method="POST">
-                    {% csrf_token %}
+                    <div class="complaint-info-item">
+                        <span class="complaint-info-icon">01</span>
+                        <div>
+                            <strong>Expliquez votre problème</strong>
+                            <p>Décrivez clairement ce qui s'est passé.</p>
+                        </div>
+                    </div>
 
-                    <label for="nom">Votre nom</label>
-                    <input
-                        type="text"
-                        id="nom"
-                        name="nom"
-                        placeholder="Entrez votre nom"
-                        required
-                    >
+                    <div class="complaint-info-item">
+                        <span class="complaint-info-icon">02</span>
+                        <div>
+                            <strong>Recevez un numéro de suivi</strong>
+                            <p>Gardez votre référence après l'envoi.</p>
+                        </div>
+                    </div>
 
-                    <label for="description">Description du problème</label>
-                    <textarea
-                        id="description"
-                        name="description"
-                        placeholder="Expliquez votre problème..."
-                        rows="5"
-                        required
-                    ></textarea>
+                    <div class="complaint-info-item">
+                        <span class="complaint-info-icon">03</span>
+                        <div>
+                            <strong>Suivez votre demande</strong>
+                            <p>Consultez son évolution à tout moment.</p>
+                        </div>
+                    </div>
 
-                    <button type="submit">Envoyer ma réclamation</button>
-                </form>
+                    <div class="complaint-security-note">
+                        <span>✓</span>
+                        Ne communiquez jamais votre code PIN ou votre mot de passe.
+                    </div>
+                </div>
 
-                <a href="/">Retour à l'accueil</a>
+                <div class="complaint-form-card">
+
+                    <div class="complaint-form-heading">
+                        <div class="complaint-form-icon">✎</div>
+                        <span class="complaint-eyebrow">FORMULAIRE DE CONTACT</span>
+                        <h2>Déposer une réclamation</h2>
+                        <p>Veuillez remplir les champs ci-dessous.</p>
+                    </div>
+
+                    {% if erreur %}
+                        <p class="complaint-error">{{ erreur }}</p>
+                    {% endif %}
+
+                    <form method="POST" class="athena-complaint-form">
+                        {% csrf_token %}
+
+                        <label for="nom">Votre nom complet</label>
+                        <input
+                            type="text"
+                            id="nom"
+                            name="nom"
+                            placeholder="Ex. : Jean Dupont"
+                            required
+                        >
+
+                        <label for="description">Description du problème</label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            placeholder="Expliquez-nous votre problème en quelques phrases..."
+                            rows="6"
+                            required
+                        ></textarea>
+
+                        <p class="complaint-form-hint">
+                            Veuillez éviter de partager des informations
+                            confidentielles comme votre PIN.
+                        </p>
+
+                        <button type="submit">
+                            Envoyer ma réclamation <span>→</span>
+                        </button>
+                    </form>
+
+                    <p class="complaint-form-footer">
+                        Banque Démo — ATHENA AI
+                    </p>
+
+                </div>
 
             </section>
 
         {% endif %}
+
+        <footer class="complaint-page-footer">
+            © Banque Démo — ATHENA AI
+        </footer>
 
     </main>
 

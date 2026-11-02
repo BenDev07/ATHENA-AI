@@ -130,6 +130,20 @@ def suivre_reclamation(request):
         }
     )
 
+@require_POST
+def nouvelle_conversation(request):
+
+    connexion = obtenir_connexion()
+    curseur = connexion.cursor()
+
+    # Supprimer les anciens messages
+    curseur.execute("DELETE FROM messages")
+
+    connexion.commit()
+    connexion.close()
+
+    # Retourner vers le chatbot vide
+    return redirect("chatbot")
 
 def chatbot(request):
 

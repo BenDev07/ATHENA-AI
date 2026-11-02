@@ -1,6 +1,6 @@
 @echo off
 
-cd /d C:\Users\Just\MWALIMU_AI
+cd /d C:\Users\Just\ATHENA-AI
 
 call venv\Scripts\activate
 

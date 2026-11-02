@@ -1,6 +1,4 @@
-
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,103 +8,165 @@
     <link rel="manifest" href="{% static 'agents/manifest.json' %}">
     <meta name="theme-color" content="#123b5d">
 
-    <title>ATHENA AI \| Banque Démo</title>
-
-    <link rel="stylesheet" href="{% static 'agents/style.css' %}">
+    <title>ATHENA AI | Banque Démo</title>
+    <link rel="stylesheet" href="{% static 'agents/style.css' %}?v=4">
 </head>
 
-<body>
+<body style="background-color: rgb(236, 232, 232);" class="athena-home-page">
 
-    <header class="header">
-    <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             width="32"
-             height="32"
-             viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path fill="#a3c197" d="M6 2.5c1.778 0 3.438.359 4.69.984c.469.235.925.535 1.308.897q.192-.181.401-.339l.8-.602l1.201 1.6l-.8.6c-.493.37-.6.68-.6.86v12.65q.153-.087.31-.166C14.563 18.358 16.223 18 18 18c1.065 0 2.085.13 3 .366V9h2v12.307l-1.408-.63C20.68 20.269 19.422 20 18 20c-1.535 0-2.876.314-3.796.773c-.979.49-1.204.981-1.204 1.227h-2c0-.246-.225-.737-1.204-1.227C8.876 20.313 7.536 20 6 20c-1.421 0-2.68.269-3.592.677L1 21.307V3.77c.228-.175.337-.264.441-.336c.062-.043.163-.106.308-.18c.194-.099.468-.216.834-.328C3.315 2.702 4.415 2.5 6 2.5"/>
-            <path fill="#94ba85" d="M20.532 3.467L23.57 4.75l-3.037 1.282L19.25 9.07l-1.283-3.037L14.93 4.75l3.036-1.283L19.25.43z"/>
-        </svg>
+    <header class="home-navbar">
+        <a href="{% url 'accueil' %}" class="home-brand">
+            <div class="home-brand-icon">A</div>
+            <div>
+                <h1>ATHENA AI</h1>
+                <span>BANQUE DÉMO</span>
+            </div>
+        </a>
 
-        <div>
-            <h1>ATHENA AI</h1>
-            <p>LES SERVICES DE BANQUE DÉMO</p>
-        </div>
-    </div>
-</header>
+        <nav class="home-nav">
+            <a href="{% url 'chatbot' %}">Assistant IA</a>
+            <a href="{% url 'deposer_reclamation' %}">Réclamations</a>
+            <a href="{% url 'suivre_reclamation' %}">Suivi</a>
+        </nav>
 
-    <main>
+        <a href="{% url 'connexion_agent' %}" class="agent-access">
+            Espace agent <span>→</span>
+        </a>
+    </header>
 
-        <section class="welcome">
-            <p class="welcome-label">SERVICE CLIENTÈLE</p>
+    <main class="home-main">
 
-            <h2>Bienvenue chez ATHENA-AI</h2>
+        <section class="home-hero">
+            <div class="hero-content">
+                <div class="hero-label">
+                    <span class="hero-dot"></span>
+                    SERVICE CLIENTÈLE NUMÉRIQUE
+                </div>
 
-            <p>
-                Votre banque reste à votre écoute.
-                Retrouvez ici les services qui vous permettent
-                d'obtenir de l'aide et de suivre vos demandes.
-            </p>
+                <h2>
+                    Votre banque,<br>
+                    <span>toujours à votre écoute.</span>
+                </h2>
+
+                <p>
+                    Besoin d'une information ou d'une assistance ?
+                    ATHENA AI vous accompagne dans vos démarches
+                    bancaires, simplement et à tout moment.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="{% url 'chatbot' %}" class="hero-primary">
+                        Discuter avec ATHENA AI
+                        <span>→</span>
+                    </a>
+
+                    <a href="{% url 'deposer_reclamation' %}" class="hero-secondary">
+                        Déposer une réclamation
+                    </a>
+                </div>
+
+                <div class="hero-note">
+                    <span class="hero-note-dot"></span>
+                    Assistant intelligent fonctionnant localement
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-circle">
+                    <div class="visual-inner">
+                        <div class="visual-symbol">A</div>
+                        <h3>ATHENA AI</h3>
+                        <p>Votre assistant bancaire</p>
+                    </div>
+                </div>
+
+                <div class="visual-card visual-card-top">
+                    <span class="visual-card-icon">✦</span>
+                    <div>
+                        <strong>Assistance intelligente</strong>
+                        <small>Réponses à vos questions</small>
+                    </div>
+                </div>
+
+                <div class="visual-card visual-card-bottom">
+                    <span class="visual-card-icon">✓</span>
+                    <div>
+                        <strong>Suivi des demandes</strong>
+                        <small>Vos réclamations en un seul endroit</small>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="services">
-
-            <div class="service-card">
+        <section class="home-services">
+            <div class="services-heading">
                 <div>
-                    <p class="service-number">01 — ASSISTANCE</p>
+                    <span>COMMENT POUVONS-NOUS VOUS AIDER ?</span>
+                    <h2>Nos services</h2>
+                </div>
+                <p>Choisissez le service dont vous avez besoin.</p>
+            </div>
+
+            <div class="home-service-grid">
+
+                <article class="home-service-card">
+                    <div class="home-service-top">
+                        <span class="home-service-icon">✦</span>
+                        <span class="home-service-number">01</span>
+                    </div>
+
                     <h3>Assistant bancaire</h3>
                     <p>
-                        Une question sur nos services ?
-                        Discutez avec ATHENA AI pour obtenir
-                        des informations et des orientations.
+                        Posez vos questions et obtenez des informations
+                        sur les services de Banque Démo grâce à notre
+                        assistant intelligent.
                     </p>
-                </div>
 
-                <a href="{% url 'chatbot' %}">
-                    Accéder à l'assistant →
-                </a>
-            </div>
+                    <a href="{% url 'chatbot' %}">
+                        Parler à l'assistant <span>→</span>
+                    </a>
+                </article>
 
-            <div class="service-card">
-                <div>
-                    <p class="service-number">02 — RÉCLAMATIONS</p>
+                <article class="home-service-card">
+                    <div class="home-service-top">
+                        <span class="home-service-icon">↗</span>
+                        <span class="home-service-number">02</span>
+                    </div>
+
                     <h3>Déposer une réclamation</h3>
                     <p>
-                        Vous rencontrez un problème avec votre compte,
-                        votre carte ou une opération bancaire ?
-                        Faites-nous parvenir votre demande.
+                        Signalez un problème concernant votre compte,
+                        votre carte ou une opération bancaire.
                     </p>
-                </div>
 
-                <a href="{% url 'deposer_reclamation' %}">
-                    Envoyer une réclamation →
-                </a>
-            </div>
+                    <a href="{% url 'deposer_reclamation' %}">
+                        Envoyer une demande <span>→</span>
+                    </a>
+                </article>
 
-            <div class="service-card">
-                <div>
-                    <p class="service-number">03 — SUIVI</p>
+                <article class="home-service-card">
+                    <div class="home-service-top">
+                        <span class="home-service-icon">⌕</span>
+                        <span class="home-service-number">03</span>
+                    </div>
+
                     <h3>Suivre une réclamation</h3>
                     <p>
-                        Consultez l'évolution de votre demande
-                        à l'aide du numéro de suivi reçu
-                        lors de son enregistrement.
+                        Consultez le statut de votre demande à l'aide
+                        du numéro de suivi qui vous a été communiqué.
                     </p>
-                </div>
 
-                <a href="{% url 'suivre_reclamation' %}">
-                    Consulter ma demande →
-                </a>
+                    <a href="{% url 'suivre_reclamation' %}">
+                        Consulter ma demande <span>→</span>
+                    </a>
+                </article>
+
             </div>
-
         </section>
 
-        <footer class="home-footer">
-            <a href="{% url 'connexion_agent' %}">
-                Espace réservé aux agents
-            </a>
-
-            <p>	© Banque Démo — ATHENA AI</p>
+        <footer class="home-bottom">
+            <span>© Banque Démo — ATHENA AI</span>
+            <span>Votre assistance bancaire numérique</span>
         </footer>
 
     </main>
@@ -114,12 +174,7 @@
     <script>
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("/service-worker.js")
-                .then(() => {
-                    console.log("ATHENA AI : Service Worker activé !");
-                })
-                .catch(error => {
-                    console.log("Erreur Service Worker :", error);
-                });
+                .catch(error => console.log("Erreur Service Worker :", error));
         }
     </script>
 

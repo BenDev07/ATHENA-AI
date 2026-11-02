@@ -1,5 +1,5 @@
-{% load static %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,40 +7,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Connexion Agent | ATHENA AI</title>
-
-    <link rel="stylesheet" href="{% static 'agents/style.css' %}">
+    <link rel="stylesheet" href="{% static 'agents/style.css' %}?v=4">
 </head>
 
-<body>
+<body class="athena-login-page">
 
-    <header class="header">
-        <h1>ATHENA AI</h1>
-        <p>Espace réservé aux agents</p>
-    </header>
+    <main class="login-layout">
 
-    <main>
+        <section class="login-presentation">
+            <a href="{% url 'accueil' %}" class="login-brand">
+                <div class="login-brand-icon">A</div>
+                <div>
+                    <strong>ATHENA AI</strong>
+                    <span>BANQUE DÉMO</span>
+                </div>
+            </a>
 
-        <section class="welcome">
-            <h2>Connexion Agent</h2>
+            <div class="login-presentation-content">
+                <span class="login-eyebrow">ESPACE PROFESSIONNEL</span>
 
-            <form method="POST">
-                {% csrf_token %}
+                <h1>
+                    Bienvenue dans<br>
+                    votre espace<br>
+                    <span>agent.</span>
+                </h1>
 
-                <label>Nom d'utilisateur</label>
-                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                <p>
+                    Gérez les réclamations des clients,
+                    consultez leurs demandes et apportez
+                    les réponses nécessaires.
+                </p>
 
-                <label>Mot de passe</label>
-                <input type="password" name="password" placeholder="Mot de passe" required>
+                <div class="login-security">
+                    <span>✓</span>
+                    Accès réservé au personnel autorisé
+                </div>
+            </div>
 
-                {% if erreur %}
-                    <p style="color: red;">{{ erreur }}</p>
-                {% endif %}
+            <div class="login-presentation-footer">
+                © Banque Démo — ATHENA AI
+            </div>
+        </section>
 
-                <button type="submit">Se connecter</button>
-            </form>
+        <section style="background-color: rgb(236, 232, 232);" class="login-form-section">
+
+            <div class="login-form-wrapper">
+
+                <div class="login-form-icon">↗</div>
+
+                <span class="login-form-label">AUTHENTIFICATION</span>
+                <h2>Connexion</h2>
+
+                <p class="login-description">
+                    Entrez vos identifiants pour accéder
+                    à votre espace de travail.
+                </p>
+
+                <form method="POST" class="athena-login-form">
+                    {% csrf_token %}
+
+                    <label for="username">Nom d'utilisateur</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Votre nom d'utilisateur"
+                        autocomplete="username"
+                        required
+                    >
+
+                    <label for="password">Mot de passe</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Votre mot de passe"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    {% if erreur %}
+                        <p class="login-error">{{ erreur }}</p>
+                    {% endif %}
+
+                    <button type="submit">
+                        Se connecter <span>→</span>
+                    </button>
+                </form>
+
+                <a href="{% url 'accueil' %}" class="login-back">
+                    ← Retour à l'accueil
+                </a>
+
+            </div>
+
+            <div class="login-mobile-footer">
+                © Banque Démo — ATHENA AI
+            </div>
 
         </section>
-        <a href="/">Retour à l'accueil</a>
 
     </main>
 

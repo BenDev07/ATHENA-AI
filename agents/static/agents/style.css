@@ -8,7 +8,7 @@
     --secondary: #315b58;
     --accent: #789b86;
 
-    --background: #f4f2ec;
+    --background: #ababa7;
     --surface: #ffffff;
 
     --text: #26343c;
@@ -77,7 +77,7 @@ button {
 .header,
 body > header {
     background: var(--primary);
-    color: #ffffff;
+    color: #ed0d0d;
     padding: 15px 7%;
     
 }
@@ -673,3 +673,3169 @@ body {
     padding-top: 85px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ATHENA AI — NOUVELLE INTERFACE CHAT
+========================================= */
+
+body.athena-chat-page {
+    padding-top: 0;
+    margin: 0;
+    background: #f7f8fa;
+    color: #252a31;
+    overflow: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.athena-chat-layout {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    min-height: 500px;
+}
+
+/* BARRE LATERALE */
+
+.athena-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 17px;
+    background: #172f3d;
+    color: white;
+}
+
+.athena-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 7px 30px;
+    color: white;
+}
+
+.athena-brand:hover {
+    color: white;
+}
+
+.athena-brand-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: #789b86;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.athena-brand strong,
+.athena-brand span {
+    display: block;
+}
+
+.athena-brand strong {
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.athena-brand span {
+    margin-top: 3px;
+    color: #aebfba;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.new-chat-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 12px;
+    margin-bottom: 35px;
+    border: 1px solid #536c70;
+    border-radius: 9px;
+    color: white;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.new-chat-link:hover {
+    background: #294652;
+    color: white;
+}
+
+.new-chat-icon {
+    font-size: 22px;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.sidebar-label {
+    padding: 0 10px 10px;
+    color: #aebfba;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 11px;
+    border-radius: 8px;
+    color: #d9e1df;
+    font-size: 13px;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    background: #294652;
+    color: white;
+}
+
+.sidebar-link span {
+    font-size: 17px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 15px 8px 0;
+    border-top: 1px solid #405862;
+}
+
+.offline-indicator {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 20px;
+    color: #d9e1df;
+    font-size: 12px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #6dc69b;
+}
+
+.sidebar-home {
+    color: #b8c9c4;
+    font-size: 12px;
+}
+
+.sidebar-home:hover {
+    color: white;
+}
+
+/* ESPACE PRINCIPAL */
+
+.athena-chat-main {
+    flex: 1;
+    min-width: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f7f8fa;
+}
+
+.athena-topbar {
+    height: 72px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    border-bottom: 1px solid #e8eaed;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.topbar-title {
+    display: block;
+    color: #26343c;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.topbar-subtitle {
+    display: block;
+    margin-top: 3px;
+    color: #89939b;
+    font-size: 11px;
+}
+
+.topbar-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #66736f;
+    font-size: 11px;
+}
+
+/* CONVERSATION */
+
+.athena-conversation {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 35px 20px;
+}
+
+.conversation-messages {
+    width: 100%;
+    max-width: 790px;
+    margin: 0 auto;
+}
+
+.chat-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin: 0 0 30px;
+}
+
+.message-avatar {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.ai-avatar {
+    background: #dce9e1;
+    color: #315b58;
+    font-size: 17px;
+}
+
+.user-avatar {
+    background: #e9eaf0;
+    color: #515b68;
+}
+
+.message-content {
+    min-width: 0;
+    flex: 1;
+    padding-top: 4px;
+}
+
+.message-content p {
+    margin: 7px 0 0;
+    color: #343b43;
+    font-size: 14px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.assistant-name {
+    color: #315b58;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.user-message .message-content {
+    padding: 11px 16px;
+    background: #edf0f3;
+    border-radius: 13px;
+}
+
+.user-message .message-content p {
+    margin: 0;
+}
+
+/* ECRAN D'ACCUEIL DU CHAT */
+
+.athena-welcome {
+    width: 100%;
+    max-width: 690px;
+    margin: 45px auto 30px;
+    text-align: center;
+}
+
+.welcome-symbol {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 22px;
+    border-radius: 18px;
+    background: #e3eee7;
+    color: #315b58;
+    font-size: 30px;
+}
+
+.welcome-eyebrow {
+    color: #668a79;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.athena-welcome h1 {
+    margin: 15px 0 10px;
+    color: #243b43;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: clamp(23px, 3vw, 32px);
+    font-weight: 650;
+    letter-spacing: -0.7px;
+}
+
+.athena-welcome > p {
+    max-width: 490px;
+    margin: 0 auto;
+    color: #7c858d;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 38px;
+    text-align: left;
+}
+
+.suggestion-card {
+    padding: 17px;
+    border: 1px solid #e6e9e8;
+    border-radius: 12px;
+    background: white;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.suggestion-card:hover {
+    border-color: #9bb9a6;
+    transform: translateY(-2px);
+}
+
+.suggestion-card span {
+    display: block;
+    margin-bottom: 10px;
+    color: #779b87;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.suggestion-card strong {
+    color: #33464a;
+    font-size: 13px;
+}
+
+.suggestion-card p {
+    margin: 5px 0 0;
+    color: #879098;
+    font-size: 11px;
+}
+
+/* ZONE DE SAISIE */
+
+.athena-composer-area {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 10px 25px 18px;
+}
+
+.complaint-notice {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 13px;
+    color: #818a91;
+    font-size: 11px;
+}
+
+.complaint-notice a {
+    color: #397b68;
+    font-weight: 700;
+}
+
+.athena-composer {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 10px 12px 10px 18px;
+    border: 1px solid #dfe4e3;
+    border-radius: 17px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(28, 48, 52, 0.06);
+}
+
+.athena-composer textarea {
+    flex: 1;
+    width: 100%;
+    min-height: 42px;
+    max-height: 150px;
+    padding: 10px 0;
+    resize: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #26343c;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.athena-composer textarea:focus {
+    border: none;
+}
+
+.athena-composer textarea::placeholder {
+    color: #a0a8ad;
+}
+
+.athena-composer button {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    border-radius: 12px;
+    background: #315b58;
+    color: white;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.athena-composer button:hover {
+    background: #244641;
+    transform: translateY(-2px);
+}
+
+.composer-disclaimer {
+    margin: 10px 0 0;
+    color: #9ba2a6;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 750px) {
+    .athena-sidebar {
+        width: 68px;
+        padding: 20px 9px;
+        align-items: center;
+    }
+
+    .athena-brand {
+        padding: 0 0 30px;
+    }
+
+    .athena-brand > div:last-child,
+    .new-chat-link,
+    .sidebar-label,
+    .sidebar-link:not(.active),
+    .sidebar-link.active {
+        font-size: 0;
+    }
+
+    .new-chat-link {
+        width: 45px;
+        height: 45px;
+        justify-content: center;
+        padding: 0;
+        font-size: 22px;
+    }
+
+    .sidebar-section {
+        width: 100%;
+    }
+
+    .sidebar-link {
+        justify-content: center;
+        padding: 13px 0;
+    }
+
+    .sidebar-link span {
+        font-size: 19px;
+    }
+
+    .sidebar-bottom {
+        width: 100%;
+        padding: 15px 0 0;
+        text-align: center;
+    }
+
+    .offline-indicator {
+        justify-content: center;
+        font-size: 0;
+    }
+
+    .sidebar-home {
+        font-size: 0;
+    }
+
+    .sidebar-home::before {
+        content: "⌂";
+        font-size: 21px;
+    }
+
+    .athena-topbar {
+        height: 62px;
+        padding: 0 18px;
+    }
+
+    .topbar-status {
+        font-size: 0;
+    }
+
+    .athena-conversation {
+        padding: 25px 15px;
+    }
+
+    .athena-welcome {
+        margin-top: 35px;
+    }
+
+    .suggestion-grid {
+        gap: 8px;
+        margin-top: 25px;
+    }
+
+    .suggestion-card {
+        padding: 12px;
+    }
+
+    .athena-composer-area {
+        padding: 10px 12px 15px;
+    }
+}
+
+@media (max-width: 430px) {
+    .athena-sidebar {
+        width: 57px;
+        padding: 15px 6px;
+    }
+
+    .athena-brand-icon {
+        width: 37px;
+        height: 37px;
+    }
+
+    .suggestion-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .athena-welcome h1 {
+        font-size: 23px;
+    }
+
+    .chat-message {
+        gap: 9px;
+    }
+
+    .message-avatar {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+
+
+
+
+/* ================================
+   ATHENA AI - PAGE D'ACCUEIL
+================================ */
+
+.athena-home-page {
+    padding-top: 0;
+    background: #f7f8fa;
+    color: #172b3a;
+}
+
+.home-navbar {
+    width: 100%;
+    min-height: 82px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border-bottom: 1px solid #e9edf0;
+}
+
+.home-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #17384b;
+}
+
+.home-brand-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    background: #173d50;
+    color: #b7d5a7;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.home-brand h1 {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+.home-brand span {
+    display: block;
+    margin-top: 3px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #87949c;
+}
+
+.home-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.home-nav a,
+.agent-access {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #52636d;
+}
+
+.home-nav a:hover {
+    color: #247b68;
+}
+
+.agent-access {
+    padding: 12px 17px;
+    border: 1px solid #dce5e6;
+    border-radius: 9px;
+    color: #173d50;
+}
+
+.agent-access span {
+    margin-left: 8px;
+}
+
+.home-main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 35px;
+}
+
+.home-hero {
+    min-height: 470px;
+    margin-top: 35px;
+    padding: 55px 65px;
+    border-radius: 22px;
+    background: #173d50;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 30px;
+    overflow: hidden;
+}
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #b9d8bd;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.hero-dot,
+.hero-note-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #a8d49b;
+}
+
+.hero-content h2 {
+    margin: 25px 0 18px;
+    font-size: clamp(34px, 4vw, 51px);
+    line-height: 1.15;
+    color: #ffffff;
+}
+
+.hero-content h2 span {
+    color: #b8d6a8;
+}
+
+.hero-content > p {
+    max-width: 490px;
+    color: #d0dce1;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.hero-primary,
+.hero-secondary {
+    padding: 14px 18px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero-primary {
+    background: #b8d6a8;
+    color: #173d50;
+}
+
+.hero-primary span {
+    margin-left: 10px;
+}
+
+.hero-secondary {
+    border: 1px solid #66808b;
+    color: #ffffff;
+}
+
+.hero-note {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 25px;
+    color: #b9c9ce;
+    font-size: 11px;
+}
+
+.hero-note-dot {
+    width: 7px;
+    height: 7px;
+}
+
+.hero-visual {
+    min-height: 320px;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.visual-circle {
+    width: 255px;
+    height: 255px;
+    border-radius: 50%;
+    border: 1px solid #557180;
+    display: grid;
+    place-items: center;
+    background: rgba(255,255,255,0.04);
+}
+
+.visual-inner {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: #244e5e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+}
+
+.visual-symbol {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    border-radius: 17px;
+    background: #b8d6a8;
+    color: #173d50;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.visual-inner h3 {
+    margin: 13px 0 3px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.visual-inner p {
+    margin: 0;
+    color: #c0d1d4;
+    font-size: 10px;
+}
+
+.visual-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 13px 15px;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #173d50;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.13);
+}
+
+.visual-card-top {
+    top: 25px;
+    right: -5px;
+}
+
+.visual-card-bottom {
+    bottom: 25px;
+    left: -5px;
+}
+
+.visual-card-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    background: #edf5e9;
+    color: #397b61;
+    font-size: 18px;
+}
+
+.visual-card strong,
+.visual-card small {
+    display: block;
+}
+
+.visual-card strong {
+    font-size: 10px;
+}
+
+.visual-card small {
+    margin-top: 4px;
+    color: #849198;
+    font-size: 9px;
+}
+
+.home-services {
+    padding: 65px 0 45px;
+}
+
+.services-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.services-heading span {
+    color: #52836f;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.services-heading h2 {
+    margin: 9px 0 0;
+    color: #173d50;
+    font-size: 29px;
+}
+
+.services-heading > p {
+    color: #849198;
+    font-size: 12px;
+}
+
+.home-service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.home-service-card {
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e9edef;
+    border-radius: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.home-service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(25,55,65,0.07);
+}
+
+.home-service-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-service-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #edf5e9;
+    color: #397b61;
+    font-size: 22px;
+}
+
+.home-service-number {
+    color: #aab5b9;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.home-service-card h3 {
+    margin: 23px 0 10px;
+    color: #173d50;
+    font-size: 17px;
+}
+
+.home-service-card p {
+    min-height: 75px;
+    color: #78868d;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.home-service-card a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #397b61;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.home-service-card a span {
+    margin-left: 7px;
+}
+
+.home-bottom {
+    padding: 22px 0;
+    border-top: 1px solid #e5eaec;
+    display: flex;
+    justify-content: space-between;
+    color: #8a969c;
+    font-size: 11px;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+    .home-navbar {
+        padding: 15px 5%;
+    }
+
+    .home-nav {
+        gap: 15px;
+    }
+
+    .home-hero {
+        padding: 40px;
+        grid-template-columns: 1fr 0.8fr;
+    }
+
+    .visual-circle {
+        width: 210px;
+        height: 210px;
+    }
+
+    .visual-inner {
+        width: 160px;
+        height: 160px;
+    }
+
+    .home-service-grid {
+        gap: 12px;
+    }
+
+    .home-service-card {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 650px) {
+    .home-navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .home-nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        padding-top: 12px;
+        border-top: 1px solid #edf0f1;
+    }
+
+    .home-nav a {
+        font-size: 11px;
+    }
+
+    .agent-access {
+        font-size: 11px;
+        padding: 10px;
+    }
+
+    .home-main {
+        padding: 0 16px;
+    }
+
+    .home-hero {
+        margin-top: 18px;
+        padding: 35px 25px;
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h2 {
+        font-size: 36px;
+    }
+
+    .hero-visual {
+        min-height: 270px;
+        margin-top: 15px;
+    }
+
+    .visual-card-top {
+        right: 0;
+    }
+
+    .visual-card-bottom {
+        left: 0;
+    }
+
+    .home-services {
+        padding-top: 45px;
+    }
+
+    .services-heading {
+        display: block;
+    }
+
+    .services-heading > p {
+        margin-top: 10px;
+    }
+
+    .home-service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-service-card p {
+        min-height: auto;
+    }
+
+    .home-bottom {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+
+
+
+
+
+
+/* ================================
+   ATHENA AI - CONNEXION AGENT
+================================ */
+
+.athena-login-page {
+    padding-top: 0;
+    min-height: 100vh;
+    background: #ffffff;
+}
+
+.login-layout {
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.login-presentation {
+    min-height: 100vh;
+    padding: 45px 9%;
+    background: #173d50;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.login-brand-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    background: #b8d6a8;
+    color: #173d50;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.login-brand strong,
+.login-brand span {
+    display: block;
+}
+
+.login-brand strong {
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.login-brand span {
+    margin-top: 4px;
+    color: #b8c9ce;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.login-presentation-content {
+    max-width: 490px;
+    margin: 55px auto;
+}
+
+.login-eyebrow {
+    color: #b8d6a8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.login-presentation-content h1 {
+    margin: 25px 0;
+    color: #ffffff;
+    font-size: clamp(40px, 5vw, 65px);
+    line-height: 1.13;
+}
+
+.login-presentation-content h1 span {
+    color: #b8d6a8;
+}
+
+.login-presentation-content > p {
+    max-width: 390px;
+    color: #c6d4d9;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.login-security {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 35px;
+    color: #d1dedf;
+    font-size: 12px;
+}
+
+.login-security span {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #315d60;
+    color: #c5e4b8;
+}
+
+.login-presentation-footer {
+    color: #aebfc5;
+    font-size: 11px;
+}
+
+.login-form-section {
+    min-height: 100vh;
+    padding: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form-wrapper {
+    width: 100%;
+    max-width: 410px;
+}
+
+.login-form-icon {
+    width: 49px;
+    height: 49px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: #edf5e9;
+    color: #397b61;
+    font-size: 25px;
+}
+
+.login-form-label {
+    display: block;
+    margin-top: 35px;
+    color: #54836f;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.login-form-wrapper h2 {
+    margin: 12px 0 8px;
+    color: #173d50;
+    font-size: 34px;
+}
+
+.login-description {
+    margin-bottom: 30px;
+    color: #849198;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.athena-login-form {
+    width: 100%;
+    margin: 0;
+}
+
+.athena-login-form label {
+    display: block;
+    margin: 19px 0 9px;
+    color: #354c58;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.athena-login-form input {
+    width: 100%;
+    min-height: 49px;
+    padding: 13px 15px;
+    border: 1px solid #e0e7e9;
+    border-radius: 9px;
+    background: #fbfcfc;
+    color: #173d50;
+    font-size: 13px;
+    outline: none;
+}
+
+.athena-login-form input:focus {
+    border-color: #548b78;
+    box-shadow: 0 0 0 3px rgba(84,139,120,0.10);
+}
+
+.athena-login-form button {
+    width: 100%;
+    min-height: 49px;
+    margin-top: 27px;
+    padding: 13px 18px;
+    border: none;
+    border-radius: 9px;
+    background: #173d50;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.athena-login-form button:hover {
+    background: #24566a;
+}
+
+.athena-login-form button span {
+    margin-left: 10px;
+}
+
+.login-error {
+    margin-top: 15px;
+    padding: 11px 13px;
+    border-radius: 8px;
+    background: #fff0f0;
+    color: #bd3c3c;
+    font-size: 12px;
+}
+
+.login-back {
+    display: inline-block;
+    margin-top: 27px;
+    color: #668078;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.login-back:hover {
+    color: #173d50;
+}
+
+.login-mobile-footer {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 750px) {
+    .login-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .login-presentation {
+        min-height: auto;
+        padding: 25px 7%;
+    }
+
+    .login-presentation-content {
+        margin: 45px 0 25px;
+    }
+
+    .login-presentation-content h1 {
+        font-size: 42px;
+    }
+
+    .login-presentation-footer {
+        display: none;
+    }
+
+    .login-form-section {
+        min-height: auto;
+        padding: 45px 7%;
+    }
+
+    .login-mobile-footer {
+        display: block;
+        margin-top: 40px;
+        color: #929da2;
+        font-size: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .login-presentation-content h1 {
+        font-size: 35px;
+    }
+
+    .login-form-section {
+        padding: 35px 22px;
+    }
+}
+
+
+
+
+
+
+/* ================================
+   ATHENA AI - TABLEAU DE BORD AGENT
+================================ */
+
+.athena-dashboard-page {
+    padding-top: 0;
+    min-height: 100vh;
+    background: #f5f7f8;
+    color: #173d50;
+    display: flex;
+}
+
+.dashboard-sidebar {
+    width: 255px;
+    min-width: 255px;
+    min-height: 100vh;
+    padding: 28px 19px;
+    background: #173d50;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 5px 35px;
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: 1px solid #365766;
+}
+
+.dashboard-brand-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: #b8d6a8;
+    color: #173d50;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.dashboard-brand strong,
+.dashboard-brand span {
+    display: block;
+}
+
+.dashboard-brand strong {
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.dashboard-brand span {
+    margin-top: 4px;
+    color: #b9c9ce;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.dashboard-menu {
+    padding-top: 35px;
+}
+
+.dashboard-menu-label {
+    display: block;
+    margin: 0 10px 15px;
+    color: #91a9b1;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.dashboard-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 12px;
+    margin-bottom: 7px;
+    border-radius: 8px;
+    color: #c5d2d7;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.dashboard-menu-link > span {
+    width: 22px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.dashboard-menu-link:hover,
+.dashboard-menu-link.active {
+    background: #315669;
+    color: #ffffff;
+}
+
+.dashboard-menu-link.active {
+    border-left: 3px solid #b8d6a8;
+}
+
+.dashboard-sidebar-bottom {
+    margin-top: auto;
+}
+
+.dashboard-agent {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 17px 5px;
+    border-top: 1px solid #365766;
+}
+
+.dashboard-agent-avatar {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #b8d6a8;
+    color: #173d50;
+    font-weight: 700;
+}
+
+.dashboard-agent strong,
+.dashboard-agent span {
+    display: block;
+}
+
+.dashboard-agent strong {
+    font-size: 11px;
+}
+
+.dashboard-agent span {
+    margin-top: 4px;
+    color: #aabdc4;
+    font-size: 10px;
+}
+
+.dashboard-logout {
+    display: block;
+    padding: 12px 5px;
+    color: #c5d2d7;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.dashboard-main {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-topbar {
+    min-height: 85px;
+    padding: 17px 4%;
+    background: #ffffff;
+    border-bottom: 1px solid #e8edef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-breadcrumb {
+    color: #829198;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+.dashboard-topbar h1 {
+    margin: 6px 0 0;
+    color: #173d50;
+    font-size: 20px;
+}
+
+.dashboard-topbar-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #71827f;
+    font-size: 11px;
+}
+
+.dashboard-topbar-status span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #70b58a;
+}
+
+.dashboard-content {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 35px 4%;
+}
+
+.dashboard-intro h2 {
+    margin: 0;
+    color: #173d50;
+    font-size: 23px;
+}
+
+.dashboard-intro p {
+    margin-top: 8px;
+    color: #859198;
+    font-size: 12px;
+}
+
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+    margin: 27px 0;
+}
+
+.dashboard-stat-card {
+    padding: 21px;
+    border: 1px solid #e8edef;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.dashboard-stat-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #edf5e9;
+    color: #397b61;
+    font-size: 20px;
+}
+
+.dashboard-stat-card > p {
+    margin: 17px 0 7px;
+    color: #78888e;
+    font-size: 11px;
+}
+
+.dashboard-stat-card h3 {
+    margin: 0;
+    color: #173d50;
+    font-size: 23px;
+}
+
+.dashboard-stat-card > span {
+    display: block;
+    margin-top: 6px;
+    color: #a0aaae;
+    font-size: 10px;
+}
+
+.dashboard-table-section {
+    overflow: hidden;
+    border: 1px solid #e7edef;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.dashboard-table-heading {
+    padding: 22px 23px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.dashboard-table-heading h2 {
+    margin: 0;
+    color: #173d50;
+    font-size: 16px;
+}
+
+.dashboard-table-heading p {
+    margin: 7px 0 0;
+    color: #87949a;
+    font-size: 11px;
+}
+
+.dashboard-total {
+    padding: 8px 12px;
+    border-radius: 7px;
+    background: #edf5e9;
+    color: #397b61;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.dashboard-table-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.dashboard-table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.dashboard-table th {
+    padding: 14px 13px;
+    background: #f7f9fa;
+    color: #71828a;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.dashboard-table td {
+    padding: 17px 13px;
+    border-top: 1px solid #edf0f1;
+    color: #53656e;
+    font-size: 11px;
+    vertical-align: top;
+}
+
+.dashboard-reference {
+    color: #52836f;
+}
+
+.dashboard-client {
+    color: #173d50;
+    white-space: nowrap;
+}
+
+.dashboard-description {
+    max-width: 220px;
+    line-height: 1.7;
+}
+
+.dashboard-date {
+    white-space: nowrap;
+    color: #87949a !important;
+}
+
+.dashboard-status-form,
+.dashboard-response-form {
+    width: 100%;
+    margin: 0;
+}
+
+.dashboard-status-form select {
+    width: 100%;
+    min-width: 125px;
+    padding: 9px;
+    border: 1px solid #e0e7e9;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #53656e;
+    font-size: 10px;
+}
+
+.dashboard-status-form button,
+.dashboard-response-form button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 9px 10px;
+    border: none;
+    border-radius: 7px;
+    background: #edf5e9;
+    color: #397b61;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.dashboard-status-form button:hover {
+    background: #dcebd5;
+}
+
+.dashboard-response-form textarea {
+    width: 100%;
+    min-width: 180px;
+    min-height: 75px;
+    padding: 10px;
+    border: 1px solid #e0e7e9;
+    border-radius: 7px;
+    background: #fbfcfc;
+    color: #354c58;
+    font-family: inherit;
+    font-size: 11px;
+    resize: vertical;
+}
+
+.dashboard-response-form textarea:focus {
+    outline: none;
+    border-color: #548b78;
+}
+
+.dashboard-response-form button {
+    background: #173d50;
+    color: #ffffff;
+}
+
+.dashboard-response-form button:hover {
+    background: #24566a;
+}
+
+.dashboard-previous-response {
+    max-width: 230px;
+    margin-top: 13px;
+    padding: 10px;
+    border-radius: 7px;
+    background: #f0f6ed;
+}
+
+.dashboard-previous-response strong {
+    color: #397b61;
+    font-size: 10px;
+}
+
+.dashboard-previous-response p {
+    margin: 7px 0 0;
+    color: #53656e;
+    font-size: 10px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.dashboard-empty {
+    padding: 45px 15px !important;
+    text-align: center;
+}
+
+.dashboard-empty > span {
+    display: block;
+    margin-bottom: 12px;
+    color: #8eaaa0;
+    font-size: 30px;
+}
+
+.dashboard-empty strong {
+    color: #173d50;
+    font-size: 13px;
+}
+
+.dashboard-empty p {
+    color: #87949a;
+    font-size: 11px;
+}
+
+.dashboard-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 22px 0;
+    color: #8a969c;
+    font-size: 10px;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+    .dashboard-sidebar {
+        width: 210px;
+        min-width: 210px;
+    }
+
+    .dashboard-content {
+        padding: 28px 3%;
+    }
+
+    .dashboard-stats-grid {
+        gap: 10px;
+    }
+
+    .dashboard-stat-card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .athena-dashboard-page {
+        display: block;
+    }
+
+    .dashboard-sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        padding: 15px 18px;
+    }
+
+    .dashboard-brand {
+        padding-bottom: 15px;
+    }
+
+    .dashboard-menu {
+        padding-top: 15px;
+    }
+
+    .dashboard-menu-label {
+        margin-bottom: 8px;
+    }
+
+    .dashboard-menu-link {
+        display: inline-flex;
+        margin-right: 5px;
+        padding: 10px;
+    }
+
+    .dashboard-sidebar-bottom {
+        display: none;
+    }
+
+    .dashboard-topbar {
+        min-height: 70px;
+        padding: 13px 18px;
+    }
+
+    .dashboard-topbar h1 {
+        font-size: 17px;
+    }
+
+    .dashboard-content {
+        padding: 25px 15px;
+    }
+
+    .dashboard-intro h2 {
+        font-size: 20px;
+    }
+
+    .dashboard-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-stat-card {
+        padding: 17px;
+    }
+
+    .dashboard-table-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dashboard-footer {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
+
+/* ================================
+   ATHENA AI - DEPOT RECLAMATION
+================================ */
+
+.athena-complaint-page {
+    padding-top: 0;
+    min-height: 100vh;
+    background: #f5f7f8;
+    color: #173d50;
+}
+
+.complaint-navbar {
+    min-height: 78px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border-bottom: 1px solid #e8edef;
+}
+
+.complaint-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #173d50;
+    text-decoration: none;
+}
+
+.complaint-brand-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #173d50;
+    color: #b8d6a8;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.complaint-brand strong,
+.complaint-brand span {
+    display: block;
+}
+
+.complaint-brand strong {
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.complaint-brand span {
+    margin-top: 4px;
+    color: #89969c;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.complaint-back {
+    color: #62777e;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.complaint-back:hover {
+    color: #397b61;
+}
+
+.complaint-main {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 55px 30px 20px;
+}
+
+.complaint-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 65px;
+}
+
+.complaint-information {
+    padding: 20px 0;
+}
+
+.complaint-eyebrow {
+    color: #54836f;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.complaint-information h1 {
+    margin: 22px 0;
+    color: #173d50;
+    font-size: clamp(38px, 4vw, 52px);
+    line-height: 1.15;
+}
+
+.complaint-information h1 span {
+    color: #64977b;
+}
+
+.complaint-information > p {
+    max-width: 430px;
+    color: #78888e;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.complaint-info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 27px;
+}
+
+.complaint-info-icon {
+    width: 39px;
+    height: 39px;
+    min-width: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: #e8f1e5;
+    color: #397b61;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.complaint-info-item strong {
+    color: #274858;
+    font-size: 12px;
+}
+
+.complaint-info-item p {
+    margin: 5px 0 0;
+    color: #87949a;
+    font-size: 11px;
+}
+
+.complaint-security-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 35px;
+    padding: 13px;
+    border-radius: 9px;
+    background: #edf5e9;
+    color: #527864;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.complaint-security-note span {
+    font-size: 16px;
+}
+
+.complaint-form-card {
+    padding: 35px;
+    border: 1px solid #e8edef;
+    border-radius: 17px;
+    background: #ffffff;
+    box-shadow: 0 15px 45px rgba(23,61,80,0.05);
+}
+
+.complaint-form-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 22px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #edf5e9;
+    color: #397b61;
+    font-size: 22px;
+}
+
+.complaint-form-heading h2 {
+    margin: 10px 0 8px;
+    color: #173d50;
+    font-size: 23px;
+}
+
+.complaint-form-heading > p {
+    margin-bottom: 25px;
+    color: #87949a;
+    font-size: 12px;
+}
+
+.athena-complaint-form {
+    width: 100%;
+    margin: 0;
+}
+
+.athena-complaint-form label {
+    display: block;
+    margin: 18px 0 9px;
+    color: #354c58;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.athena-complaint-form input,
+.athena-complaint-form textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #e0e7e9;
+    border-radius: 9px;
+    background: #fbfcfc;
+    color: #173d50;
+    font-family: inherit;
+    font-size: 12px;
+    outline: none;
+}
+
+.athena-complaint-form input {
+    min-height: 47px;
+}
+
+.athena-complaint-form textarea {
+    min-height: 135px;
+    resize: vertical;
+}
+
+.athena-complaint-form input:focus,
+.athena-complaint-form textarea:focus {
+    border-color: #548b78;
+    box-shadow: 0 0 0 3px rgba(84,139,120,0.09);
+}
+
+.complaint-form-hint {
+    margin-top: 10px;
+    color: #929da2;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.athena-complaint-form button {
+    width: 100%;
+    min-height: 49px;
+    margin-top: 20px;
+    padding: 13px 17px;
+    border: none;
+    border-radius: 9px;
+    background: #173d50;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.athena-complaint-form button:hover {
+    background: #24566a;
+}
+
+.athena-complaint-form button span {
+    margin-left: 9px;
+}
+
+.complaint-error {
+    padding: 11px 13px;
+    border-radius: 8px;
+    background: #fff0f0;
+    color: #bd3c3c;
+    font-size: 12px;
+}
+
+.complaint-form-footer {
+    margin-top: 25px;
+    padding-top: 17px;
+    border-top: 1px solid #edf0f1;
+    color: #9ba6aa;
+    font-size: 10px;
+    text-align: center;
+}
+
+.complaint-page-footer {
+    padding: 30px 0 10px;
+    color: #929da2;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* Confirmation */
+.complaint-success {
+    max-width: 560px;
+    margin: 35px auto 60px;
+    padding: 45px 35px;
+    border: 1px solid #e8edef;
+    border-radius: 17px;
+    background: #ffffff;
+    box-shadow: 0 15px 45px rgba(23,61,80,0.05);
+    text-align: center;
+}
+
+.success-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 23px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #eaf5e7;
+    color: #397b61;
+    font-size: 30px;
+}
+
+.complaint-success h1 {
+    margin: 13px 0;
+    color: #173d50;
+    font-size: 27px;
+}
+
+.complaint-success > p {
+    color: #78888e;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.tracking-number-box {
+    margin: 28px 0;
+    padding: 22px;
+    border: 1px dashed #a9c7a0;
+    border-radius: 11px;
+    background: #f5f9f2;
+}
+
+.tracking-number-box span,
+.tracking-number-box strong,
+.tracking-number-box small {
+    display: block;
+}
+
+.tracking-number-box span {
+    color: #789083;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.tracking-number-box strong {
+    margin: 12px 0;
+    color: #173d50;
+    font-size: 30px;
+}
+
+.tracking-number-box small {
+    color: #87949a;
+    font-size: 10px;
+}
+
+.complaint-primary-button {
+    display: block;
+    padding: 14px;
+    border-radius: 9px;
+    background: #173d50;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.complaint-secondary-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #54836f;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 750px) {
+    .complaint-main {
+        padding: 35px 20px 15px;
+    }
+
+    .complaint-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .complaint-information {
+        padding: 10px 0;
+    }
+
+    .complaint-information h1 {
+        font-size: 40px;
+    }
+
+    .complaint-info-item {
+        margin-top: 19px;
+    }
+
+    .complaint-form-card {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .complaint-navbar {
+        padding: 0 18px;
+    }
+
+    .complaint-back {
+        font-size: 10px;
+    }
+
+    .complaint-brand strong {
+        font-size: 14px;
+    }
+
+    .complaint-brand-icon {
+        width: 37px;
+        height: 37px;
+    }
+
+    .complaint-success {
+        padding: 35px 20px;
+    }
+}
+
+
+
+
+
+
+/* =========================================
+   ATHENA AI - SUIVI DES RECLAMATIONS
+========================================= */
+
+.athena-tracking-page {
+    min-height: 100vh;
+    background: #f5f7f8;
+    color: #243b46;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVIGATION */
+
+.tracking-navbar {
+    width: 100%;
+    min-height: 82px;
+    padding: 0 7%;
+    background: #ffffff;
+    border-bottom: 1px solid #e8edef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.tracking-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #173d50;
+    text-decoration: none;
+}
+
+.tracking-brand-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+    background: #173d50;
+    color: #b8d6a8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.tracking-brand strong {
+    display: block;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.tracking-brand small {
+    display: block;
+    margin-top: 4px;
+    color: #819198;
+    font-size: 11px;
+}
+
+.tracking-back-link {
+    color: #52666f;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tracking-back-link:hover {
+    color: #173d50;
+}
+
+.tracking-back-link span {
+    margin-right: 6px;
+}
+
+/* CONTENU PRINCIPAL */
+
+.tracking-main {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 65px 25px 30px;
+    box-sizing: border-box;
+}
+
+.tracking-intro {
+    max-width: 650px;
+    margin-bottom: 38px;
+}
+
+.tracking-eyebrow {
+    color: #78976c;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.tracking-intro h1 {
+    margin: 13px 0;
+    color: #173d50;
+    font-size: 36px;
+    line-height: 1.2;
+}
+
+.tracking-intro > p {
+    max-width: 570px;
+    color: #718087;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* DISPOSITION */
+
+.tracking-layout {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 25px;
+    align-items: start;
+}
+
+/* PANNEAU INFORMATIONS */
+
+.tracking-info {
+    padding: 30px;
+    border-radius: 16px;
+    background: #173d50;
+    color: white;
+}
+
+.tracking-info-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    background: rgba(184, 214, 168, 0.15);
+    color: #b8d6a8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.tracking-info h2 {
+    margin: 23px 0 12px;
+    font-size: 21px;
+}
+
+.tracking-info > p {
+    color: #d0dce0;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.tracking-help {
+    display: flex;
+    gap: 12px;
+    margin-top: 35px;
+    padding: 17px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.tracking-help-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #b8d6a8;
+    color: #173d50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.tracking-help strong {
+    font-size: 12px;
+}
+
+.tracking-help p {
+    margin: 7px 0 0;
+    color: #d0dce0;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* RECHERCHE */
+
+.tracking-content {
+    min-width: 0;
+}
+
+.tracking-search-card,
+.tracking-result-card {
+    padding: 28px;
+    border: 1px solid #e9eef0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(23, 61, 80, 0.04);
+}
+
+.tracking-search-card h2 {
+    margin: 0 0 9px;
+    color: #173d50;
+    font-size: 20px;
+}
+
+.tracking-search-card > p {
+    margin-bottom: 24px;
+    color: #829097;
+    font-size: 13px;
+}
+
+.tracking-search-form label {
+    display: block;
+    margin-bottom: 9px;
+    color: #344b56;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.tracking-search-form input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid #dce4e7;
+    border-radius: 8px;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: #fbfcfc;
+}
+
+.tracking-search-form input:focus {
+    border-color: #78976c;
+    box-shadow: 0 0 0 3px rgba(184, 214, 168, 0.2);
+}
+
+.tracking-search-form button {
+    width: 100%;
+    height: 48px;
+    margin-top: 17px;
+    padding: 0 17px;
+    border: none;
+    border-radius: 8px;
+    background: #173d50;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.tracking-search-form button:hover {
+    background: #24566d;
+}
+
+.tracking-search-form button span {
+    margin-left: 8px;
+}
+
+/* ERREUR */
+
+.tracking-error {
+    margin-bottom: 20px;
+    padding: 12px 14px;
+    border: 1px solid #f0cccc;
+    border-radius: 8px;
+    background: #fff2f2;
+    color: #b53d3d;
+    font-size: 13px;
+}
+
+/* RESULTAT */
+
+.tracking-result-card {
+    margin-top: 22px;
+}
+
+.tracking-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #edf0f1;
+}
+
+.tracking-result-label {
+    color: #829097;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.tracking-result-header h2 {
+    margin: 8px 0 0;
+    color: #173d50;
+    font-size: 21px;
+}
+
+.tracking-status {
+    max-width: 130px;
+    padding: 7px 11px;
+    border-radius: 20px;
+    background: #edf4e9;
+    color: #527449;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tracking-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.tracking-detail span,
+.tracking-problem > span {
+    display: block;
+    margin-bottom: 7px;
+    color: #8a989e;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+}
+
+.tracking-detail strong {
+    color: #344b56;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.tracking-problem {
+    padding: 17px;
+    border-radius: 9px;
+    background: #f6f8f8;
+}
+
+.tracking-problem p {
+    margin: 0;
+    color: #52666f;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* REPONSE DE L'AGENT */
+
+.tracking-response {
+    margin-top: 20px;
+    padding: 18px;
+    border-left: 3px solid #91b47f;
+    border-radius: 5px;
+    background: #f4f8f1;
+}
+
+.tracking-response-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.tracking-response-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #dcebd4;
+    color: #527449;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.tracking-response h3 {
+    margin: 0;
+    color: #34513b;
+    font-size: 14px;
+}
+
+.tracking-response > p {
+    margin: 0;
+    color: #536a58;
+    font-size: 13px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.tracking-response .tracking-pending-message {
+    color: #7d8588;
+}
+
+/* PIED DE PAGE */
+
+.tracking-footer {
+    margin-top: 55px;
+    padding: 20px 0;
+    border-top: 1px solid #e5ebed;
+    text-align: center;
+}
+
+.tracking-footer span {
+    color: #173d50;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.tracking-footer p {
+    margin: 7px 0 0;
+    color: #94a0a5;
+    font-size: 11px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 750px) {
+
+    .tracking-navbar {
+        padding: 0 5%;
+    }
+
+    .tracking-brand small {
+        font-size: 9px;
+    }
+
+    .tracking-back-link {
+        font-size: 11px;
+    }
+
+    .tracking-main {
+        padding: 42px 18px 25px;
+    }
+
+    .tracking-intro h1 {
+        font-size: 29px;
+    }
+
+    .tracking-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .tracking-info {
+        padding: 24px;
+    }
+
+    .tracking-help {
+        margin-top: 22px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .tracking-brand-icon {
+        width: 37px;
+        height: 37px;
+    }
+
+    .tracking-brand strong {
+        font-size: 14px;
+    }
+
+    .tracking-back-link {
+        font-size: 10px;
+    }
+
+    .tracking-details {
+        grid-template-columns: 1fr;
+    }
+
+    .tracking-search-card,
+    .tracking-result-card {
+        padding: 20px;
+    }
+
+    .tracking-result-header h2 {
+        font-size: 18px;
+    }
+}
+
+/* =====================================================
+   CORRECTIONS FINALES — ATHENA AI
+   Ces règles sont placées à la fin pour remplacer
+   les anciennes valeurs sans supprimer les styles utiles.
+   ===================================================== */
+
+/* 1. BARRES DE NAVIGATION FIXES */
+
+.home-navbar,
+.complaint-navbar,
+.tracking-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    min-height: 64px;
+    height: 64px;
+    padding: 0 5%;
+    box-shadow: 0 2px 10px rgba(23, 47, 61, 0.06);
+}
+
+/* On réserve la place de la barre en haut des pages. */
+.athena-home-page {
+    padding-top: 64px;
+}
+
+.athena-complaint-page {
+    padding-top: 64px;
+}
+
+.athena-tracking-page {
+    padding-top: 64px;
+}
+
+/* La page suivi commence juste sous sa barre. */
+.tracking-main {
+    padding-top: 38px;
+}
+
+/* 2. BARRE DU CHATBOT FIXE */
+
+.athena-chat-main {
+    position: relative;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.athena-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    min-height: 62px;
+    height: 62px;
+    padding: 0 28px;
+}
+
+/* 3. BULLES DES MESSAGES DU CHATBOT */
+
+.conversation-messages {
+    max-width: 720px;
+}
+
+.chat-message {
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.message-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+}
+
+.message-content {
+    max-width: 85%;
+    flex: 0 1 auto;
+    padding: 12px 16px;
+    border-radius: 15px;
+    box-shadow: 0 2px 7px rgba(23, 47, 61, 0.05);
+}
+
+.message-content p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+/* Réponses de l'assistant : bulle blanche. */
+.ai-message .message-content {
+    background: #ffffff;
+    border: 1px solid #e5eae7;
+    border-top-left-radius: 5px;
+}
+
+/* Messages de l'utilisateur : bulle vert foncé. */
+.user-message {
+    flex-direction: row-reverse;
+}
+
+.user-message .message-content {
+    background: #315b58;
+    border: 1px solid #315b58;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 15px;
+}
+
+.user-message .message-content p {
+    color: #ffffff;
+}
+
+.assistant-name {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 10px;
+}
+
+/* 4. DIMINUER LES GRANDES DIVISIONS ET LES ESPACEMENTS */
+
+.home-main,
+.tracking-main {
+    max-width: 1000px;
+}
+
+.home-hero {
+    min-height: 0;
+    padding-top: 42px;
+    padding-bottom: 42px;
+}
+
+.home-services {
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.home-service-grid {
+    gap: 16px;
+}
+
+.home-service-card {
+    padding: 20px;
+}
+
+.login-layout {
+    min-height: 100vh;
+}
+
+.login-presentation,
+.login-form-section {
+    padding: 35px;
+}
+
+.dashboard-sidebar {
+    width: 225px;
+    min-width: 225px;
+    padding: 22px 15px;
+}
+
+.dashboard-main,
+.dashboard-content {
+    padding: 24px;
+}
+
+.stats {
+    gap: 14px;
+}
+
+.table-container {
+    padding: 18px;
+}
+
+/* 5. PAGE SUIVI : ALIGNEMENT DE LA NAVBAR */
+
+.tracking-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-sizing: border-box;
+}
+
+.tracking-brand {
+    min-width: 0;
+    gap: 9px;
+}
+
+.tracking-brand-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+.tracking-brand strong {
+    font-size: 15px;
+}
+
+.tracking-brand small {
+    margin-top: 2px;
+    font-size: 10px;
+}
+
+.tracking-back-link {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+/* 6. ADAPTATION AUX TÉLÉPHONES */
+
+@media (max-width: 750px) {
+    .home-navbar,
+    .complaint-navbar,
+    .tracking-navbar {
+        min-height: 58px;
+        height: 58px;
+        padding: 0 16px;
+    }
+
+    .athena-home-page,
+    .athena-complaint-page,
+    .athena-tracking-page {
+        padding-top: 58px;
+    }
+
+    .tracking-main {
+        padding: 30px 16px 22px;
+    }
+
+    .athena-topbar {
+        min-height: 58px;
+        height: 58px;
+        padding: 0 15px;
+    }
+
+    .athena-conversation {
+        padding: 22px 12px;
+    }
+
+    .chat-message {
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .message-content {
+        max-width: calc(100% - 38px);
+        padding: 10px 12px;
+    }
+
+    .message-content p {
+        font-size: 12px;
+    }
+
+    .dashboard-sidebar {
+        width: 190px;
+        min-width: 190px;
+        padding: 18px 10px;
+    }
+
+    .dashboard-main,
+    .dashboard-content {
+        padding: 16px;
+    }
+
+    .login-presentation,
+    .login-form-section {
+        padding: 24px 18px;
+    }
+}
+
+@media (max-width: 450px) {
+    .tracking-brand small {
+        display: none;
+    }
+
+    .tracking-back-link {
+        font-size: 11px;
+    }
+
+    .tracking-brand strong {
+        font-size: 13px;
+    }
+
+    .tracking-brand-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .home-service-card {
+        padding: 16px;
+    }
+}
+
+
+.new-chat-form {
+    margin: 0;
+    width: 100%;
+}
+
+.new-chat-link {
+    width: 100%;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+}
