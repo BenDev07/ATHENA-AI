@@ -168,6 +168,8 @@ historique = [
         - Lorsqu'un client souhaite déposer une réclamation,
           recueille son nom et la description de son problème
           avant de procéder à l'enregistrement.
+        -pour repondre aux besoins du client qui veut savoir les horaires
+          
         
         GESTION DES RÉCLAMATIONS :
         - Lorsqu'un client souhaite déposer une réclamation,

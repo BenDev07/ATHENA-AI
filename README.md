@@ -79,6 +79,7 @@ ollama pull qwen2.5:1.5b
 
 ```bash
 python manage.py migrate
+python initialiser_db.py
 python manage.py runserver
 ```
 
